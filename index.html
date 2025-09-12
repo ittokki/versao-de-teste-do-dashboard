@@ -2620,20 +2620,6 @@ if ("serviceWorker" in navigator) {
 window.showPopup = function(html, soundId){ queuePopup(html, soundId); };
 </script>
 
-<script>
-let deferredPrompt;
-window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    const btn = document.getElementById('installBtn');
-    if (btn) btn.style.display = 'block';
-});
-document.getElementById('installBtn')?.addEventListener('click', () => {
-    if (deferredPrompt) {
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then(() => deferredPrompt = null);
-    }
-});
 </script>
 </body>
 
