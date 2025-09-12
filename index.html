@@ -1315,7 +1315,6 @@ jogadores.forEach(j => {
             } else {
                 mainStar.style.display = "none";
             }
-        }
 
         function medalhaHTML(index) {
             return index < 3 ? `<span class="medal">${medalhas[index]}</span>` : '';
@@ -1812,7 +1811,6 @@ window.showModal = function(playerName) {
                 playClickSound();
                 this.classList.remove('active');
             }
-        }
 
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
@@ -2300,7 +2298,6 @@ window.showModal = function(playerName) {
             } else if (currentView === 'hall') {
                 mainContent.innerHTML = renderHallFama(filteredJogadores, filteredPartidas);
             }
-        }
 
         async function init() {
             try {
@@ -2315,7 +2312,6 @@ window.showModal = function(playerName) {
                 console.error('Erro ao carregar dados:', e);
                 document.getElementById('mainContent').innerHTML = '<div style="text-align: center; color: var(--primary);">Erro ao carregar os dados. Tente novamente mais tarde.</div>';
             }
-        }
 
         window.clearCache = function() {
             localStorage.removeItem('partidasCache');
@@ -2467,7 +2463,6 @@ function _nextMatchDateForPlayer(jogador) {
             if (!next || d < next) next = d;
           }
         }
-      }
     });
     if (!next) return null;
     // retornar em DD/MM/YYYY
@@ -2546,7 +2541,6 @@ function sortearDesafioSemanal(jogador) {
           return salvo.desafio;
         }
       }
-    }
   } catch(e) {
     console.warn('Erro lendo desafio persistente:', e);
   }
@@ -2621,7 +2615,7 @@ window.showPopup = function(html, soundId){ queuePopup(html, soundId); };
 </script>
 
 <script>
-let deferredPrompt;
+deferredPrompt;
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
