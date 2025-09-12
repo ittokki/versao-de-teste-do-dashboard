@@ -1137,8 +1137,8 @@ body.mobile-view #mainContent {
                     pontosMVP: 0,
                     nivel: 'Iniciante',
                     conquistas: []
-    }
-    }
+                });
+            });
 
             localStorage.setItem(cacheKey, JSON.stringify(jogadores));
             localStorage.setItem(cacheTimeKey, Date.now());
@@ -1154,7 +1154,7 @@ body.mobile-view #mainContent {
                 notasPorJogador[nomeNorm].todas.push(p.notaPartida);
                 if (p.isGoleiro) notasPorJogador[nomeNorm].goleiro.push(p.notaPartida);
                 else notasPorJogador[nomeNorm].linha.push(p.notaPartida);
-    }
+            });
             jogadores.forEach(j => {
                 const nomeNorm = normalizaNome(j.nome);
                 const notas = notasPorJogador[nomeNorm] || { todas: [], goleiro: [], linha: [] };
@@ -1228,7 +1228,7 @@ jogadores.forEach(j => {
                     case 'lendario': bonus += 5; break;
                     case 'mitico': bonus += 10; break;
                 }
-    }
+            });
             return bonus;
         }
 
@@ -1315,6 +1315,7 @@ jogadores.forEach(j => {
             } else {
                 mainStar.style.display = "none";
             }
+        }
 
         function medalhaHTML(index) {
             return index < 3 ? `<span class="medal">${medalhas[index]}</span>` : '';
@@ -1346,7 +1347,7 @@ jogadores.forEach(j => {
                 if (valA !== valB) return valA - valB;
                 if (a.jogos !== b.jogos) return a.jogos - b.jogos;
                 return a.nome.localeCompare(b.nome);
-    }
+            });
 
             const maxDefault = 10;
             const tableId = "table_" + tipo;
@@ -1364,7 +1365,7 @@ jogadores.forEach(j => {
                     rows += `
                         <tr${i === 0 ? ' class="top-player"' : ''}>
                             <td data-label="Posição">${currentPos}</td>
-                            <td data-label="Nome" onclick="showModal('${encodeURIComponent(jogador.nome)}')">
+                            <td data-label="Nome" onclick="showModal(${JSON.stringify(encodeURIComponent(jogador.nome))})">
                                 ${medalhaHTML(currentPos - 1)}${jogador.nome}${tipo === "pontosMVP" ? ` <span class="badge badge-${jogador.nivel.toLowerCase()}" data-tooltip="${tooltip}">${jogador.nivel}</span>` : ''}
                             </td>
                             <td data-label="${titulo}">${tipo === "aproveitamento" ? `<div class="progress" style="width: ${Math.min(jogador[tipo], 100)}%;"></div><span class="progress-text">${jogador[tipo]}%</span>` : 
@@ -1372,7 +1373,7 @@ jogadores.forEach(j => {
                             </td>
                         </tr>
                     `;
-    }
+                });
                 return rows;
             }
 
@@ -1416,7 +1417,7 @@ jogadores.forEach(j => {
                     rowsHtml += `
                         <tr${i === 0 ? ' class="top-player"' : ''}>
                             <td data-label="Posição">${currentPos}</td>
-                            <td data-label="Nome" onclick="showModal('${encodeURIComponent(jogador.nome)}')">
+                            <td data-label="Nome" onclick="showModal(${JSON.stringify(encodeURIComponent(jogador.nome))})">
                                 ${medalhaHTML(currentPos - 1)}${jogador.nome}${tipo === "pontosMVP" ? ` <span class="badge badge-${jogador.nivel.toLowerCase()}" data-tooltip="${tooltip}">${jogador.nivel}</span>` : ''}
                             </td>
                             <td data-label="${tipo === "aproveitamento" ? 'Aproveitamento' : tipo === "notaGeral" ? 'Nota Geral' : tipo === "pontosMVP" ? 'Pontos MVP' : tipo}">
@@ -1425,7 +1426,7 @@ jogadores.forEach(j => {
                             </td>
                         </tr>
                     `;
-    }
+                });
                 btn.textContent = "Ver Menos";
                 btn.setAttribute("data-expanded", "true");
             } else {
@@ -1439,7 +1440,7 @@ jogadores.forEach(j => {
                     rowsHtml += `
                         <tr${i === 0 ? ' class="top-player"' : ''}>
                             <td data-label="Posição">${currentPos}</td>
-                            <td data-label="Nome" onclick="showModal('${encodeURIComponent(jogador.nome)}')">
+                            <td data-label="Nome" onclick="showModal(${JSON.stringify(encodeURIComponent(jogador.nome))})">
                                 ${medalhaHTML(currentPos - 1)}${jogador.nome}${tipo === "pontosMVP" ? ` <span class="badge badge-${jogador.nivel.toLowerCase()}" data-tooltip="${tooltip}">${jogador.nivel}</span>` : ''}
                             </td>
                             <td data-label="${tipo === "aproveitamento" ? 'Aproveitamento' : tipo === "notaGeral" ? 'Nota Geral' : tipo === "pontosMVP" ? 'Pontos MVP' : tipo}">
@@ -1448,7 +1449,7 @@ jogadores.forEach(j => {
                             </td>
                         </tr>
                     `;
-    }
+                });
                 btn.textContent = "Ver Mais";
                 btn.setAttribute("data-expanded", "false");
             }
@@ -1495,7 +1496,7 @@ function gerarDesafios(j) {
       d.desc = d.desc.replace(/\bDê\b/gi, 'Registre');
     }
     return d;
-    }
+  });
   // escolher primeiro item do pool (ou sorteio simples)
   return [ pool[Math.floor(Math.random() * pool.length)] ];
 }
@@ -1525,7 +1526,7 @@ function calcularEvolucao(jogadores, partidas) {
     const pb = parseNum(p.gols)*2 + parseNum(p.assistencias)*1 + (p.vitoria === 1 ? 1 : p.vitoria === 0.5 ? 0.5 : 0) - parseNum(p.golsContra)*0.5 + p.notaPartida*10;
     if (date >= from && date <= now) pontosPeriodo[nome] = (pontosPeriodo[nome] || 0) + pb;
     else if (date >= from2 && date < from) pontosAnterior[nome] = (pontosAnterior[nome] || 0) + pb;
-    }
+  });
 
   const arr = jogadores.map(j => {
     const name = normalizaNome(j.nome);
@@ -1610,7 +1611,7 @@ window.showModal = function(playerName) {
                 const dateA = a.dataJogo.split('/').reverse().join('-');
                 const dateB = b.dataJogo.split('/').reverse().join('-');
                 return dateA > dateB ? 1 : -1;
-    }
+            });
             const datas = partidasOrdenadas.map(p => p.dataJogo);
             const notas = partidasOrdenadas.map(p => p.jogoAconteceu ? p.notaPartida : null);
             const tooltip = jogador.nivel === 'Lenda' ? 'Lenda: ≥90 pontos/jogo' : jogador.nivel === 'Craque' ? 'Craque: 70–89 pontos/jogo' : jogador.nivel === 'Diferenciado' ? 'Diferenciado: 50–69 pontos/jogo' : jogador.nivel === 'Esforçado' ? 'Esforçado: 20–49 pontos/jogo' : 'Iniciante: 0–19 pontos/jogo';
@@ -1724,7 +1725,7 @@ window.showModal = function(playerName) {
                     scales: { y: { beginAtZero: true, max: 10 } },
                     animation: { duration: 1000, easing: 'easeOutQuart' }
                 }
-    }
+            });
         }
 
         window.showJogoModal = function(dataJogo) {
@@ -1788,7 +1789,7 @@ window.showModal = function(playerName) {
                         </table>
                     </div>
                 `;
-    }
+            });
             const modalContent = document.getElementById('modalContent');
             modalContent.innerHTML = `
                 <div class="date-title">${matchTitle}${isEmpate ? ' (Empate)' : ''}</div>
@@ -1811,6 +1812,7 @@ window.showModal = function(playerName) {
                 playClickSound();
                 this.classList.remove('active');
             }
+        }
 
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
@@ -1825,7 +1827,7 @@ window.showModal = function(playerName) {
             if (e.key === '1') document.getElementById('navRankings').click();
             if (e.key === '2') document.getElementById('navCharts').click();
             if (e.key === '3') document.getElementById('navHall').click();
-    }
+        });
 
         window.filterRankings = function() {
             playClickSound();
@@ -1866,8 +1868,8 @@ window.showModal = function(playerName) {
                     a.download = 'rankings.png';
                     a.click();
                     URL.revokeObjectURL(url);
-    }
-    }
+                });
+            });
         };
 
         window.renderJogosLista = function(partidas) {
@@ -1949,11 +1951,11 @@ window.showModal = function(playerName) {
                         maxMedia = media;
                         destaqueNome = nome;
                     }
-    }
+                });
                 if (destaqueNome) {
                     destaques.push({ mes, nome: destaqueNome, media: maxMedia.toFixed(1) });
                 }
-    }
+            });
             return destaques;
         }
 
@@ -2181,7 +2183,7 @@ window.showModal = function(playerName) {
                         new Chart(document.getElementById(chartId), config);
                         observer.unobserve(entry.target);
                     }
-    }
+                });
             }, { threshold: 0.1 });
 
             ['chartGoleadores', 'chartAssistidores', 'chartParticipacao', 'chartAproveitamento', 'chartContribuicao', 'chartEvolucaoGrupo'].forEach(id => {
@@ -2239,7 +2241,7 @@ window.showModal = function(playerName) {
                     return `
                         <tr${i === 0 ? ' class="top-player"' : ''}>
                             <td data-label="Posição">${pos}</td>
-                            <td data-label="Nome" onclick="showModal('${encodeURIComponent(jogador.nome)}')">${medalhaHTML(i)}${jogador.nome} <span class="badge badge-${jogador.nivel.toLowerCase()}" data-tooltip="${tooltip}">${jogador.nivel}</span></td>
+                            <td data-label="Nome" onclick="showModal(${JSON.stringify(encodeURIComponent(jogador.nome))})">${medalhaHTML(i)}${jogador.nome} <span class="badge badge-${jogador.nivel.toLowerCase()}" data-tooltip="${tooltip}">${jogador.nivel}</span></td>
                             <td data-label="Pontos MVP">${jogador.pontosMVP.toLocaleString('pt-BR', { minimumFractionDigits: 1 })}</td>
                             <td data-label="Jogos">${jogador.jogos}</td>
                             <td data-label="Gols">${jogador.gols}</td>
@@ -2298,6 +2300,7 @@ window.showModal = function(playerName) {
             } else if (currentView === 'hall') {
                 mainContent.innerHTML = renderHallFama(filteredJogadores, filteredPartidas);
             }
+        }
 
         async function init() {
             try {
@@ -2312,6 +2315,7 @@ window.showModal = function(playerName) {
                 console.error('Erro ao carregar dados:', e);
                 document.getElementById('mainContent').innerHTML = '<div style="text-align: center; color: var(--primary);">Erro ao carregar os dados. Tente novamente mais tarde.</div>';
             }
+        }
 
         window.clearCache = function() {
             localStorage.removeItem('partidasCache');
@@ -2463,7 +2467,8 @@ function _nextMatchDateForPlayer(jogador) {
             if (!next || d < next) next = d;
           }
         }
-    }
+      }
+    });
     if (!next) return null;
     // retornar em DD/MM/YYYY
     const dd = String(next.getDate()).padStart(2,'0');
@@ -2541,6 +2546,7 @@ function sortearDesafioSemanal(jogador) {
           return salvo.desafio;
         }
       }
+    }
   } catch(e) {
     console.warn('Erro lendo desafio persistente:', e);
   }
@@ -2587,7 +2593,7 @@ function abrirDesafiosNoModal(jogador) {
 // ----------- Modo Mobile -----------
 document.getElementById("mobileViewToggle").addEventListener("click", () => {
   document.body.classList.toggle("mobile-view");
-    }
+});
 
 // ----------- PWA Instalação -----------
 let deferredPrompt;
@@ -2596,16 +2602,16 @@ window.addEventListener("beforeinstallprompt", (e) => {
   e.preventDefault();
   deferredPrompt = e;
   installBtn.style.display = "block";
-    }
+});
 installBtn.addEventListener("click", () => {
   if (deferredPrompt) {
     deferredPrompt.prompt();
     deferredPrompt.userChoice.then(() => {
       deferredPrompt = null;
       installBtn.style.display = "none";
-    }
+    });
   }
-    }
+});
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("service-worker.js");
 }
@@ -2615,19 +2621,19 @@ window.showPopup = function(html, soundId){ queuePopup(html, soundId); };
 </script>
 
 <script>
-deferredPrompt;
+let deferredPrompt;
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
     const btn = document.getElementById('installBtn');
     if (btn) btn.style.display = 'block';
-    }
+});
 document.getElementById('installBtn')?.addEventListener('click', () => {
     if (deferredPrompt) {
         deferredPrompt.prompt();
         deferredPrompt.userChoice.then(() => deferredPrompt = null);
     }
-    }
+});
 </script>
 </body>
 
