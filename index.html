@@ -33,14 +33,14 @@
     </script>
 
     <style>
-        /* CSS Otimizado para Centralização e Mobile */
+        /* CSS Otimizado */
         body {
             background: #0f172a;
             background-image: 
                 radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.15) 0px, transparent 50%), 
                 radial-gradient(at 100% 0%, rgba(168, 85, 247, 0.15) 0px, transparent 50%);
             color: #e2e8f0;
-            overflow: hidden; /* Mantém app-feel */
+            overflow: hidden; 
         }
 
         .custom-scrollbar::-webkit-scrollbar { width: 4px; height: 4px; }
@@ -48,8 +48,6 @@
         .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
 
         .glass-sidebar { background: rgba(15, 23, 42, 0.98); border-right: 1px solid rgba(255,255,255,0.05); }
-        
-        /* Painéis mais consistentes */
         .glass-panel {
             background: rgba(30, 41, 59, 0.5);
             backdrop-filter: blur(12px);
@@ -57,81 +55,48 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
 
-        /* Nav Item Otimizado */
-        .nav-item {
-            display: flex; align-items: center; padding: 12px 16px; margin-bottom: 4px;
-            border-radius: 8px; color: #94a3b8; transition: all 0.2s; cursor: pointer; border-left: 3px solid transparent;
-        }
+        .nav-item { display: flex; align-items: center; padding: 12px 16px; margin-bottom: 4px; border-radius: 8px; color: #94a3b8; transition: all 0.2s; cursor: pointer; border-left: 3px solid transparent; }
         .nav-item:hover { background: rgba(255,255,255,0.05); color: #fff; }
         .nav-item.active { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border-left-color: #3b82f6; }
 
-        /* Card FIFA Responsivo */
-        .fut-card-container {
-            width: 260px; height: 390px; /* Levemente menor para caber melhor em telas pequenas */
-            border-radius: 16px; position: relative; overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            background: linear-gradient(135deg, #2e1065 0%, #7e22ce 50%, #a855f7 100%);
-            transition: transform 0.3s;
-            margin: 0 auto; /* Centraliza o card */
-        }
-        @media (min-width: 768px) {
-            .fut-card-container { width: 300px; height: 450px; }
-        }
-        
-        /* Cores dos Cards */
+        /* Card FIFA */
+        .fut-card-container { width: 260px; height: 390px; border-radius: 16px; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); background: linear-gradient(135deg, #2e1065 0%, #7e22ce 50%, #a855f7 100%); transition: transform 0.3s; margin: 0 auto; }
+        @media (min-width: 768px) { .fut-card-container { width: 300px; height: 450px; } }
         .gold { background: linear-gradient(135deg, #422a02 0%, #ca8a04 50%, #facc15 100%); }
         .silver { background: linear-gradient(135deg, #1f2937 0%, #6b7280 50%, #e5e7eb 100%); }
         .special { background: linear-gradient(135deg, #0c4a6e 0%, #0284c7 50%, #38bdf8 100%); }
+        .fut-card-shine { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(125deg, transparent 35%, rgba(255,255,255,0.2) 45%, transparent 55%); z-index: 2; pointer-events: none; }
 
-        .fut-card-shine {
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(125deg, transparent 35%, rgba(255,255,255,0.2) 45%, transparent 55%);
-            z-index: 2; pointer-events: none;
-        }
-
-        /* Campo de Futebol Otimizado */
-        .football-pitch {
-            background: linear-gradient(to bottom, #064e3b, #065f46);
-            border: 4px solid rgba(255,255,255,0.1); position: relative; overflow: hidden;
-            box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
-            width: 100%;
-        }
+        /* Campo */
+        .football-pitch { background: linear-gradient(to bottom, #064e3b, #065f46); border: 4px solid rgba(255,255,255,0.1); position: relative; overflow: hidden; box-shadow: inset 0 0 50px rgba(0,0,0,0.5); width: 100%; }
         .pitch-line, .pitch-circle, .pitch-area, .pitch-goal { border-color: rgba(255,255,255,0.3); }
         .pitch-line { position: absolute; background: rgba(255,255,255,0.3); }
         .pitch-circle { border: 2px solid; border-radius: 50%; position: absolute; }
         .pitch-area { position: absolute; border: 2px solid; left: 50%; transform: translateX(-50%); width: 45%; height: 16%; }
-        .pitch-goal {
-            position: absolute; width: 100px; height: 35px; left: 50%; transform: translateX(-50%);
-            border: 2px solid; 
-            background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.1) 0, rgba(255,255,255,0.1) 1px, transparent 0, transparent 6px);
-            z-index: 1;
-        }
+        .pitch-goal { position: absolute; width: 100px; height: 35px; left: 50%; transform: translateX(-50%); border: 2px solid; background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.1) 0, rgba(255,255,255,0.1) 1px, transparent 0, transparent 6px); z-index: 1; }
 
-        /* Badges e Animações */
+        /* Badges */
         .badge { font-size: 9px; font-weight: bold; padding: 2px 6px; border-radius: 99px; }
         .badge-gol { background: rgba(34, 197, 94, 0.2); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.3); }
         .badge-ass { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
         .badge-gk { background: rgba(148, 163, 184, 0.2); color: #e2e8f0; border: 1px solid rgba(148, 163, 184, 0.3); }
-        
-        .achievement-badge {
-            display: inline-flex; align-items: center; padding: 4px 8px; border-radius: 6px; font-size: 10px; font-weight: bold;
-            border: 1px solid rgba(255,255,255,0.1); margin-right: 4px; margin-bottom: 4px; background: rgba(0,0,0,0.4);
-        }
+        .achievement-badge { display: inline-flex; align-items: center; padding: 4px 8px; border-radius: 6px; font-size: 10px; font-weight: bold; border: 1px solid rgba(255,255,255,0.1); margin-right: 4px; margin-bottom: 4px; background: rgba(0,0,0,0.4); }
         
         @keyframes shine { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
-        .hero-shine {
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            background-size: 200% 100%; animation: shine 3s infinite;
-        }
-
-        /* Utilitários de Ranking */
-        .rank-item {
-            display: flex; align-items: center; padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.05);
-            transition: background 0.2s; cursor: pointer;
-        }
+        .hero-shine { background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); background-size: 200% 100%; animation: shine 3s infinite; }
+        
+        .rank-item { display: flex; align-items: center; padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.2s; cursor: pointer; }
         .rank-item:hover { background: rgba(255,255,255,0.08); }
         .rank-pos { width: 24px; font-weight: bold; color: #64748b; font-family: 'Rajdhani', sans-serif; font-size: 1.1rem; }
         .rank-1 { color: #fbbf24; } .rank-2 { color: #e2e8f0; } .rank-3 { color: #b45309; }
+
+        /* === MODO PRINT (Snapshot Mode) === */
+        #match-modal.print-active { padding: 0 !important; background: #0f172a !important; align-items: flex-start !important; }
+        #match-modal.print-active #match-content-box { height: 100vh !important; max-width: 100% !important; border: none !important; border-radius: 0 !important; box-shadow: none !important; }
+        #match-modal.print-active #match-header { padding: 10px !important; }
+        #match-modal.print-active #match-body { overflow: hidden !important; padding: 10px 20px !important; }
+        #match-modal.print-active #list-boca, #match-modal.print-active #list-river { max-height: none !important; overflow: visible !important; }
+        #match-modal.print-active .football-pitch { border-width: 2px !important; }
     </style>
 </head>
 <body class="flex h-screen font-sans text-gray-100 selection:bg-blue-500 selection:text-white">
@@ -151,7 +116,6 @@
                 <p class="text-[9px] text-blue-400 font-bold tracking-[0.25em] uppercase">Dashboard</p>
             </div>
         </div>
-
         <nav class="flex-1 px-4 overflow-y-auto custom-scrollbar space-y-1">
             <div class="text-[10px] font-bold text-gray-500 uppercase px-2 mt-4 mb-2 tracking-wider">Principal</div>
             <div class="nav-item active" data-tab="hub"><i class="fas fa-th-large w-5 mr-3 text-center"></i><span class="text-sm font-semibold">Hub & Rankings</span></div>
@@ -160,14 +124,9 @@
             <div class="nav-item" data-tab="stats"><i class="fas fa-chart-pie w-5 mr-3 text-center"></i><span class="text-sm font-semibold">Estatísticas</span></div>
             <div class="nav-item" data-tab="history"><i class="fas fa-history w-5 mr-3 text-center"></i><span class="text-sm font-semibold">Histórico</span></div>
             <div class="nav-item" data-tab="hall"><i class="fas fa-trophy w-5 mr-3 text-center"></i><span class="text-sm font-semibold">Hall da Fama</span></div>
-
             <div class="text-[10px] font-bold text-gray-500 uppercase px-2 mt-6 mb-2 tracking-wider">Ferramentas</div>
-            <div class="nav-item text-blue-300 hover:text-white" id="btn-compare">
-                <i class="fas fa-balance-scale w-5 mr-3 text-center"></i><span class="text-sm font-semibold">Comparar</span>
-            </div>
-            <div class="nav-item text-gray-400 hover:text-white" id="btn-update">
-                <i class="fas fa-sync-alt w-5 mr-3 text-center"></i><span class="text-sm font-semibold">Atualizar</span>
-            </div>
+            <div class="nav-item text-blue-300 hover:text-white" id="btn-compare"><i class="fas fa-balance-scale w-5 mr-3 text-center"></i><span class="text-sm font-semibold">Comparar</span></div>
+            <div class="nav-item text-gray-400 hover:text-white" id="btn-update"><i class="fas fa-sync-alt w-5 mr-3 text-center"></i><span class="text-sm font-semibold">Atualizar</span></div>
         </nav>
     </aside>
 
@@ -191,7 +150,6 @@
             <div class="mobile-nav-item text-lg font-bold text-gray-300 hover:text-white cursor-pointer py-3 border-b border-white/5 flex items-center" data-tab="stats"><i class="fas fa-chart-pie mr-4 text-yellow-500 w-6 text-center"></i> Estatísticas</div>
             <div class="mobile-nav-item text-lg font-bold text-gray-300 hover:text-white cursor-pointer py-3 border-b border-white/5 flex items-center" data-tab="history"><i class="fas fa-history mr-4 text-red-500 w-6 text-center"></i> Histórico</div>
             <div class="mobile-nav-item text-lg font-bold text-gray-300 hover:text-white cursor-pointer py-3 border-b border-white/5 flex items-center" data-tab="hall"><i class="fas fa-trophy mr-4 text-yellow-400 w-6 text-center"></i> Hall da Fama</div>
-            
             <div class="mt-4 pt-4 border-t border-white/10">
                  <div class="mobile-nav-item text-base text-blue-400 hover:text-blue-300 cursor-pointer py-2 flex items-center" id="mob-btn-compare"><i class="fas fa-balance-scale mr-4"></i> Comparar Jogadores</div>
                  <div class="mobile-nav-item text-base text-gray-400 hover:text-white cursor-pointer py-2 flex items-center" id="mob-btn-update"><i class="fas fa-sync-alt mr-4"></i> Atualizar Dados</div>
@@ -218,11 +176,9 @@
             </div>
 
             <div id="hub" class="tab-content opacity-100 transition-opacity duration-300">
-                
                 <div id="hero-section" class="mb-8 glass-panel rounded-2xl overflow-hidden border border-yellow-500/30 relative hidden">
                     <div class="absolute inset-0 bg-gradient-to-r from-purple-900/80 to-blue-900/80 z-0"></div>
                     <div class="absolute inset-0 hero-shine z-0 pointer-events-none"></div>
-                    
                     <div class="relative z-10 p-6 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
                         <div class="flex flex-col md:flex-row items-center gap-6">
                             <div class="relative shrink-0">
@@ -239,7 +195,6 @@
                                 </div>
                             </div>
                         </div>
-                        
                         <div class="bg-black/30 p-3 md:p-4 rounded-xl border border-white/10 backdrop-blur-md text-center min-w-[120px]">
                             <span class="block text-[10px] text-gray-400 uppercase tracking-widest mb-1">Nota Média</span>
                             <span id="hero-rating" class="block text-4xl md:text-5xl font-bold text-white font-fifa">0.0</span>
@@ -266,8 +221,7 @@
                 </div>
 
                 <h3 class="text-lg md:text-xl font-bold text-white mb-4 flex items-center gap-2 font-fifa"><i class="fas fa-list-ol text-blue-500"></i> RANKINGS OFICIAIS</h3>
-                <div id="rankings-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-                    </div>
+                <div id="rankings-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6"></div>
             </div>
 
             <div id="team" class="tab-content hidden">
@@ -278,7 +232,6 @@
                 <div class="w-full max-w-4xl mx-auto overflow-hidden rounded-xl shadow-2xl bg-black/20 border border-white/5">
                     <div class="football-pitch h-[550px] md:h-[650px] relative w-full">
                          <div class="pitch-goal top-0 border-t-0 rounded-b-md"></div><div class="pitch-area top-0 border-t-0"></div><div class="pitch-line w-full h-[1px] top-1/2"></div><div class="pitch-circle w-24 h-24 md:w-32 md:h-32 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div><div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-white/50 rounded-full"></div><div class="pitch-goal bottom-0 border-b-0 rounded-t-md"></div><div class="pitch-area bottom-0 border-b-0"></div>
-                        
                         <div id="pitch-players" class="relative w-full h-full z-10"></div>
                     </div>
                 </div>
@@ -332,13 +285,11 @@
                     <div class="glass-panel p-4 rounded-xl h-72 border border-white/5"><canvas id="chart-games"></canvas></div>
                     <div class="glass-panel p-4 rounded-xl h-72 xl:col-span-3 border border-white/5"><canvas id="chart-group-goals"></canvas></div>
                 </div>
-                
                 <div class="mt-8">
                     <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2 font-fifa">
                         <i class="fas fa-lightbulb text-yellow-400"></i> CURIOSIDADES
                     </h3>
-                    <div id="curiosities-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
-                        </div>
+                    <div id="curiosities-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6"></div>
                 </div>
             </div>
 
@@ -351,7 +302,6 @@
                 <h2 class="text-2xl md:text-3xl font-bold text-white mb-6 flex items-center gap-3 font-fifa"><i class="fas fa-trophy text-yellow-500"></i> HALL DA FAMA</h2>
                 <div id="hall-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6"></div>
             </div>
-
         </div>
     </main>
 
@@ -382,13 +332,11 @@
                     </div>
                 </div>
             </div>
-            
             <div class="flex-1 w-full text-white max-w-2xl bg-black/40 p-4 md:p-8 rounded-2xl border border-white/10 backdrop-blur-md">
                 <div class="flex items-end justify-between gap-4 mb-6 border-b border-white/10 pb-4">
                     <h2 class="text-3xl md:text-4xl font-bold uppercase font-fifa truncate" id="detail-name">Nome</h2>
                     <span class="px-2 py-1 mb-1 rounded bg-blue-600/80 text-xs font-bold uppercase tracking-wider border border-blue-400/30 whitespace-nowrap" id="detail-level">Lenda</span>
                 </div>
-
                 <div class="grid grid-cols-4 gap-2 md:gap-4 mb-6 md:mb-8">
                     <div class="bg-white/5 border border-white/10 rounded-xl p-2 md:p-4 text-center">
                         <span class="block text-[8px] md:text-[10px] text-gray-400 uppercase tracking-widest mb-1">MÉDIA</span>
@@ -407,17 +355,14 @@
                         <span class="block text-xl md:text-3xl font-bold text-purple-400 font-fifa" id="detail-wins">0</span>
                     </div>
                 </div>
-
                 <div class="glass-panel p-3 md:p-4 rounded-xl mb-6 border border-white/5">
                     <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Evolução</h4>
                     <div class="h-32 md:h-40 w-full"><canvas id="player-evo-chart"></canvas></div>
                 </div>
-
                 <div class="mb-6">
                     <h3 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Troféus</h3>
                     <div id="detail-badges" class="flex flex-wrap gap-2"></div>
                 </div>
-
                 <div>
                     <h3 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Recente</h3>
                     <div class="space-y-1 md:space-y-2" id="detail-history"></div>
@@ -426,49 +371,56 @@
         </div>
     </div>
 
-    <div id="match-modal" class="fixed inset-0 bg-black/95 backdrop-blur-xl z-[10000] hidden items-center justify-center p-0 md:p-4">
-        <button id="close-match-modal" class="absolute top-4 right-4 text-white/50 hover:text-white text-3xl transition-colors z-50 bg-black/50 rounded-full w-10 h-10 flex items-center justify-center">&times;</button>
-        <div class="glass-panel w-full max-w-7xl h-full md:h-[90vh] md:rounded-2xl flex flex-col overflow-hidden border-0 md:border md:border-white/10">
-            <div class="bg-black/40 p-4 md:p-6 text-center border-b border-white/10 relative shrink-0">
-                <h2 class="text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em] mb-4" id="match-date">RESUMO</h2>
-                <div class="flex items-center justify-center gap-4 md:gap-24">
-                    <div class="text-right">
-                        <h1 class="text-3xl md:text-7xl font-bold text-blue-500 font-fifa drop-shadow-lg">BOCA</h1>
+    <div id="match-modal" class="fixed inset-0 bg-black/95 backdrop-blur-xl z-[10000] hidden items-center justify-center p-0 md:p-4 overflow-hidden transition-all duration-300">
+        <div class="absolute top-4 right-4 z-50 flex gap-2">
+            <button id="print-btn" class="bg-blue-600 hover:bg-blue-500 text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-all" title="Modo Print"><i class="fas fa-camera"></i></button>
+            <button id="close-match-modal" class="bg-black/50 hover:bg-white text-white/50 hover:text-black w-10 h-10 rounded-full flex items-center justify-center transition-colors">&times;</button>
+        </div>
+        <div id="match-content-box" class="glass-panel w-full max-w-[1600px] h-full md:h-[95vh] md:rounded-2xl flex flex-col border border-white/10 shadow-2xl bg-[#0f172a] transition-all duration-500">
+            <div class="bg-black/40 p-4 shrink-0 border-b border-white/10 relative" id="match-header">
+                <h2 class="text-center text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em] mb-2" id="match-date">RESUMO</h2>
+                <div class="flex items-center justify-center gap-4 md:gap-16">
+                    <div class="text-right w-1/3">
+                        <h1 class="text-3xl md:text-6xl font-bold text-blue-500 font-fifa drop-shadow-lg truncate">BOCA</h1>
                     </div>
-                    <div class="text-4xl md:text-8xl font-bold text-white flex items-center gap-4 bg-black/40 px-4 md:px-8 py-2 rounded-2xl border border-white/5 shadow-2xl">
+                    <div class="text-4xl md:text-7xl font-bold text-white flex items-center gap-4 bg-white/5 px-4 md:px-6 py-1 rounded-xl border border-white/5 shadow-inner">
                         <span id="score-a">0</span>
-                        <span class="text-gray-600 text-2xl md:text-4xl">-</span>
+                        <span class="text-gray-600 text-2xl md:text-3xl">-</span>
                         <span id="score-b">0</span>
                     </div>
-                    <div class="text-left">
-                        <h1 class="text-3xl md:text-7xl font-bold text-red-500 font-fifa drop-shadow-lg">RIVER</h1>
+                    <div class="text-left w-1/3">
+                        <h1 class="text-3xl md:text-6xl font-bold text-red-500 font-fifa drop-shadow-lg truncate">RIVER</h1>
                     </div>
                 </div>
             </div>
-            <div class="flex-1 overflow-hidden flex flex-col md:flex-row">
-                <div class="w-full md:w-1/3 p-4 overflow-y-auto border-b md:border-b-0 md:border-r border-white/5 bg-black/20 custom-scrollbar h-1/2 md:h-full">
-                    <div class="mb-6">
-                        <div class="flex items-center gap-3 mb-2 pb-1 border-b border-blue-500/30">
-                            <div class="w-2 h-2 bg-blue-500 rounded-full shadow-[0_0_10px_blue]"></div>
+            <div class="flex-1 overflow-y-auto custom-scrollbar p-4" id="match-body">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4 h-full">
+                    <div class="md:col-span-3 flex flex-col gap-2 order-2 md:order-1">
+                        <div class="flex items-center gap-2 mb-1 pb-1 border-b border-blue-500/30">
+                            <div class="w-3 h-3 bg-blue-500 rounded-full shadow-[0_0_10px_blue]"></div>
                             <h3 class="text-blue-400 font-bold uppercase text-xs tracking-wider">Elenco Boca</h3>
                         </div>
-                        <div id="list-boca" class="space-y-1"></div>
+                        <div id="list-boca" class="space-y-1 pr-1 overflow-y-auto custom-scrollbar max-h-[400px] md:max-h-full"></div>
                     </div>
-                    <div>
-                        <div class="flex items-center gap-3 mb-2 pb-1 border-b border-red-500/30">
-                            <div class="w-2 h-2 bg-red-500 rounded-full shadow-[0_0_10px_red]"></div>
+                    <div class="md:col-span-6 flex flex-col h-full order-1 md:order-2 min-h-[400px]">
+                        <div class="text-center mb-2 shrink-0">
+                            <h3 class="text-yellow-400 font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-2">
+                                <i class="fas fa-star"></i> SELEÇÃO DO JOGO
+                            </h3>
+                        </div>
+                        <div class="flex-1 relative w-full h-full">
+                            <div class="football-pitch rounded-xl w-full h-full relative shadow-2xl border-2 border-white/10" id="match-pitch">
+                                <div class="pitch-goal top-0 border-t-0 rounded-b-md"></div><div class="pitch-area top-0 border-t-0"></div><div class="pitch-line w-full h-[1px] top-1/2"></div><div class="pitch-circle w-20 h-20 md:w-28 md:h-28 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div><div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-white/50 rounded-full"></div><div class="pitch-goal bottom-0 border-b-0 rounded-t-md"></div><div class="pitch-area bottom-0 border-b-0"></div>
+                                <div id="match-team-display" class="relative w-full h-full z-10"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:col-span-3 flex flex-col gap-2 order-3">
+                        <div class="flex items-center gap-2 mb-1 pb-1 border-b border-red-500/30 justify-end md:justify-start">
+                            <div class="w-3 h-3 bg-red-500 rounded-full shadow-[0_0_10px_red]"></div>
                             <h3 class="text-red-400 font-bold uppercase text-xs tracking-wider">Elenco River</h3>
                         </div>
-                        <div id="list-river" class="space-y-1"></div>
-                    </div>
-                </div>
-                <div class="w-full md:w-2/3 p-4 md:p-8 relative bg-[#0f172a] flex flex-col h-1/2 md:h-full">
-                    <div class="text-center mb-2 md:mb-4 shrink-0"><h3 class="text-yellow-400 font-bold uppercase tracking-widest text-[10px] md:text-sm flex items-center justify-center gap-2"><i class="fas fa-star"></i> SELEÇÃO DO JOGO</h3></div>
-                    <div class="flex-1 flex items-center justify-center relative w-full h-full overflow-hidden">
-                        <div class="football-pitch rounded-xl w-full h-full max-h-[400px] md:max-h-[500px] relative shadow-2xl border-2 border-white/10" id="match-pitch">
-                            <div class="pitch-goal top-0 border-t-0 rounded-b-md"></div><div class="pitch-area top-0 border-t-0"></div><div class="pitch-line w-full h-[1px] top-1/2"></div><div class="pitch-circle w-20 h-20 md:w-24 md:h-24 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div><div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-white/50 rounded-full"></div><div class="pitch-goal bottom-0 border-b-0 rounded-t-md"></div><div class="pitch-area bottom-0 border-b-0"></div>
-                            <div id="match-team-display" class="relative w-full h-full z-10"></div>
-                        </div>
+                        <div id="list-river" class="space-y-1 pr-1 overflow-y-auto custom-scrollbar max-h-[400px] md:max-h-full"></div>
                     </div>
                 </div>
             </div>
@@ -479,7 +431,6 @@
         <button id="close-comparison-modal" class="absolute top-4 right-4 text-white/50 hover:text-white text-3xl transition-colors z-50 bg-black/50 rounded-full w-10 h-10 flex items-center justify-center">&times;</button>
         <div class="glass-panel w-full max-w-5xl rounded-2xl p-4 md:p-8 flex flex-col h-[90vh] overflow-y-auto custom-scrollbar border border-white/10">
             <h2 class="text-2xl md:text-3xl font-bold text-white mb-6 md:mb-8 text-center font-fifa uppercase tracking-widest shrink-0">Face-a-Face</h2>
-            
             <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 mb-6 md:mb-8 shrink-0">
                 <div class="w-full md:w-64">
                     <label class="block text-xs text-blue-400 font-bold uppercase mb-2">Jogador 1</label>
@@ -491,11 +442,9 @@
                     <select id="p2-select" class="w-full bg-black/40 text-white p-3 rounded-lg border border-red-500/30 focus:outline-none focus:border-red-500 transition text-sm"></select>
                 </div>
             </div>
-
             <div id="comparison-content" class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-center flex-1">
                 <div class="text-center col-span-1 md:col-span-3 text-gray-500 py-10">Selecione dois jogadores para iniciar o duelo.</div>
             </div>
-            
             <div id="radar-container" class="hidden mt-6 justify-center shrink-0">
                 <div class="w-full max-w-sm h-[250px] md:h-[300px] relative">
                     <canvas id="radar-chart"></canvas>
@@ -515,7 +464,6 @@
     </div>
 
 <script>
-// Mantive o script idêntico, apenas a estrutura HTML acima foi otimizada para responsividade
 document.addEventListener('DOMContentLoaded', () => {
     const apiKey = "AIzaSyCL19ds6YqVOv5vV-zygBjeC-byy-rDPfM";
     const spreadsheetId = "1TvrVT8ksYYMlpw8gkKIFvpnnCf02J8uYTkhHc5c0vdo";
@@ -574,70 +522,42 @@ document.addEventListener('DOMContentLoaded', () => {
         if (p.includes('ata')) return 'ata'; if (p.includes('mei')) return 'mei'; if (p.includes('ala')) return 'ala'; if (p.includes('zag')) return 'zag'; if (p.includes('gol')) return 'gol';
         return 'N/A';
     };
+    
+    // Helper 3 Letras Coloridas
+    const getPos3Letters = (pos) => {
+        if (!pos) return 'N/A';
+        pos = pos.toLowerCase();
+        if (pos.includes('gol')) return 'GOL';
+        if (pos.includes('zag')) return 'ZAG';
+        if (pos.includes('ala')) return 'ALA';
+        if (pos.includes('mei')) return 'MEI';
+        if (pos.includes('ata')) return 'ATA';
+        return pos.substring(0,3).toUpperCase();
+    };
 
     function calculateFIFAStats(player) {
         let ovr;
-        if (player.notaGeral >= 6) {
-            ovr = 70 + (player.notaGeral - 6) * 7; 
-        } else {
-            ovr = 35 + (player.notaGeral * 5.8);
-        }
+        if (player.notaGeral >= 6) { ovr = 70 + (player.notaGeral - 6) * 7; } else { ovr = 35 + (player.notaGeral * 5.8); }
         if (player.jogos < 3) ovr = Math.min(ovr, 68);
         ovr = Math.round(ovr);
-
         const gpg = player.gols / (player.jogos || 1); 
         const apg = player.assistencias / (player.jogos || 1);
         const pos = player.posicaoPref;
-
         let base = ovr - 12; 
-        let pac = base; let sho = base; let pas = base; let def = base; let phy = base;
-
-        if (['ata', 'ala'].includes(pos)) pac = ovr - 3; 
-        else if (pos === 'mei') pac = ovr - 12;
-        else pac = ovr - 15; 
-        
+        let pac = base, sho = base, pas = base, def = base, phy = base;
+        if (['ata', 'ala'].includes(pos)) pac = ovr - 3; else if (pos === 'mei') pac = ovr - 12; else pac = ovr - 15; 
         let shoBonus = (gpg * 25); 
-        if (pos === 'ata') sho = (ovr - 6) + shoBonus;
-        else if (pos === 'mei' || pos === 'ala') sho = (ovr - 15) + shoBonus;
-        else sho = (ovr - 35) + shoBonus;
-
+        if (pos === 'ata') sho = (ovr - 6) + shoBonus; else if (pos === 'mei' || pos === 'ala') sho = (ovr - 15) + shoBonus; else sho = (ovr - 35) + shoBonus;
         let pasBonus = (apg * 30);
-        if (['mei', 'ala'].includes(pos)) pas = (ovr - 5) + pasBonus;
-        else if (pos === 'ata') pas = (ovr - 18) + pasBonus;
-        else pas = (ovr - 22) + pasBonus;
-
-        if (['zag', 'gol'].includes(pos)) def = ovr - 3;
-        else if (['ala', 'mei'].includes(pos)) def = ovr - 22;
-        else def = ovr - 45;
-
+        if (['mei', 'ala'].includes(pos)) pas = (ovr - 5) + pasBonus; else if (pos === 'ata') pas = (ovr - 18) + pasBonus; else pas = (ovr - 22) + pasBonus;
+        if (['zag', 'gol'].includes(pos)) def = ovr - 3; else if (['ala', 'mei'].includes(pos)) def = ovr - 22; else def = ovr - 45;
         let phyBonus = Math.min(8, player.jogos / 2);
-        if (['zag', 'gol'].includes(pos)) phy = (ovr - 5) + phyBonus;
-        else phy = (ovr - 18) + phyBonus;
-
+        if (['zag', 'gol'].includes(pos)) phy = (ovr - 5) + phyBonus; else phy = (ovr - 18) + phyBonus;
         const boost = (val, target) => Math.max(val, target);
-
-        if(pos === 'ata') {
-            sho = boost(sho, ovr - 2); pac = boost(pac, ovr - 5);
-        } else if (pos === 'ala') {
-            pac = boost(pac, ovr - 2); pas = boost(pas, ovr - 6);
-        } else if (pos === 'mei') {
-            pas = boost(pas, ovr - 2); sho = boost(sho, ovr - 10); 
-        } else if (pos === 'zag') {
-            def = boost(def, ovr - 2); phy = boost(phy, ovr - 4);
-        } else if (pos === 'gol') {
-            def = boost(def, ovr - 1); phy = boost(phy, ovr - 3); 
-        }
-
+        if(pos === 'ata') { sho = boost(sho, ovr - 2); pac = boost(pac, ovr - 5); } else if (pos === 'ala') { pac = boost(pac, ovr - 2); pas = boost(pas, ovr - 6); } else if (pos === 'mei') { pas = boost(pas, ovr - 2); sho = boost(sho, ovr - 10); } else if (pos === 'zag') { def = boost(def, ovr - 2); phy = boost(phy, ovr - 4); } else if (pos === 'gol') { def = boost(def, ovr - 1); phy = boost(phy, ovr - 3); }
         const clamp = (n) => Math.max(25, Math.min(99, Math.round(n)));
-
-        let type = 'card-silver';
-        let cssClass = 'silver';
-        if (ovr >= 90) { type = 'card-mitico'; cssClass = 'special'; } 
-        else if (ovr >= 85) { type = 'card-special'; cssClass = 'special'; } 
-        else if (ovr >= 75) { type = 'card-gold'; cssClass = 'gold'; }
-        else if (ovr >= 65) { type = 'card-silver'; cssClass = 'silver'; } 
-        else { type = 'card-bronze'; cssClass = 'silver'; }
-
+        let type = 'card-silver', cssClass = 'silver';
+        if (ovr >= 90) { type = 'card-mitico'; cssClass = 'special'; } else if (ovr >= 85) { type = 'card-special'; cssClass = 'special'; } else if (ovr >= 75) { type = 'card-gold'; cssClass = 'gold'; } else if (ovr >= 65) { type = 'card-silver'; cssClass = 'silver'; } else { type = 'card-bronze'; cssClass = 'silver'; }
         return { ovr: clamp(ovr), pac: clamp(pac), sho: clamp(sho), pas: clamp(pas), def: clamp(def), phy: clamp(phy), type: type, cssClass: cssClass };
     }
 
@@ -772,11 +692,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
                 if(btn.id === 'btn-update') { location.reload(); return; }
-
                 document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
                 document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
                 document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('opacity-100'));
-                
                 btn.classList.add('active');
                 const target = document.getElementById(btn.dataset.tab);
                 target.classList.remove('hidden');
@@ -787,14 +705,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu-overlay');
         const closeMobileMenu = document.getElementById('close-mobile-menu');
-
         mobileMenuBtn.addEventListener('click', () => { mobileMenu.classList.remove('hidden'); mobileMenu.classList.add('flex'); });
         closeMobileMenu.addEventListener('click', () => { mobileMenu.classList.add('hidden'); mobileMenu.classList.remove('flex'); });
 
         document.querySelectorAll('.mobile-nav-item').forEach(btn => {
             btn.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden'); mobileMenu.classList.remove('flex');
-
                 if(btn.id === 'mob-btn-update') { location.reload(); return; }
                 if(btn.id === 'mob-btn-compare') {
                     const modal = document.getElementById('comparison-modal');
@@ -802,7 +718,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     setupComparisonTool();
                     return;
                 }
-
                 const tabId = btn.dataset.tab;
                 if(tabId) {
                     document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
@@ -827,6 +742,19 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('select-all').onclick = () => { document.querySelectorAll('.draft-chk').forEach(c => { c.checked = true; c.closest('div').classList.add('bg-blue-500/20'); }); };
         document.getElementById('clear-all').onclick = () => { document.querySelectorAll('.draft-chk').forEach(c => { c.checked = false; c.closest('div').classList.remove('bg-blue-500/20'); }); };
         document.getElementById('generate-teams').onclick = generateTeams;
+        
+        // MODO PRINT BUTTON
+        document.getElementById('print-btn').onclick = () => {
+            const modal = document.getElementById('match-modal');
+            modal.classList.toggle('print-active');
+            const btn = document.getElementById('print-btn');
+            const icon = btn.querySelector('i');
+            if (modal.classList.contains('print-active')) {
+                btn.classList.remove('bg-blue-600'); btn.classList.add('bg-green-600'); icon.className = 'fas fa-check';
+            } else {
+                btn.classList.remove('bg-green-600'); btn.classList.add('bg-blue-600'); icon.className = 'fas fa-camera';
+            }
+        };
     }
 
     function updateDashboard(players, matches) {
@@ -852,7 +780,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const hero = candidates.sort((a,b) => b.notaGeral - a.notaGeral)[0];
         const container = document.getElementById('hero-section');
         container.classList.remove('hidden');
-
         const label = filterVal === 'Geral' ? "MELHOR DA TEMPORADA" : `MELHOR DE ${document.getElementById('month-filter').options[document.getElementById('month-filter').selectedIndex].text.toUpperCase()}`;
         document.getElementById('hero-label').innerText = label;
         document.getElementById('hero-name').innerText = hero.nomeOriginal.split(' ')[0];
@@ -867,14 +794,11 @@ document.addEventListener('DOMContentLoaded', () => {
         grid.innerHTML = '';
         const term = document.getElementById('player-search').value.toLowerCase();
         const filtered = players.filter(p => p.nomeOriginal.toLowerCase().includes(term));
-
         const createBox = (title, key, unit, reverse=false, sourceData=filtered) => {
             const sorted = [...sourceData].sort((a,b) => reverse ? a[key]-b[key] : b[key]-a[key]);
             const top5 = sorted.slice(0, 5);
             let html = `<div class="glass-panel rounded-xl overflow-hidden flex flex-col h-full border border-white/5 hover:border-white/10 transition">
-                <div class="p-3 md:p-4 border-b border-white/5 bg-white/5 flex justify-between items-center">
-                    <h3 class="font-bold text-white text-[10px] uppercase tracking-wider">${title}</h3>
-                </div>
+                <div class="p-3 md:p-4 border-b border-white/5 bg-white/5 flex justify-between items-center"><h3 class="font-bold text-white text-[10px] uppercase tracking-wider">${title}</h3></div>
                 <div class="flex-1 p-2">`;
             top5.forEach((p, i) => {
                 html += `<div class="rank-item rounded-lg" onclick="window.openPlayerModal('${p.nome}')">
@@ -889,35 +813,23 @@ document.addEventListener('DOMContentLoaded', () => {
             html += `</div><button onclick='window.openFullRanking("${title}", "${key}", ${reverse})' class="w-full py-2 md:py-3 text-[10px] font-bold text-gray-400 hover:text-white hover:bg-white/5 border-t border-white/5 transition uppercase tracking-wider">Ver Mais</button></div>`;
             return html;
         };
-
         grid.innerHTML += createBox('Nota Geral', 'notaGeral', '', false);
         grid.innerHTML += createBox('SELEÇÃO DA SEMANA', 'selectionCount', 'x', false);
         grid.innerHTML += createBox('Gols', 'gols', '', false);
         grid.innerHTML += createBox('Assistências', 'assistencias', '', false);
         grid.innerHTML += createBox('Participação (G+A)', 'ga', '', false);
         grid.innerHTML += createBox('Vitórias', 'vitorias', 'V', false);
-        
         const gks = filtered.filter(p => p.mediaGolsSofridos !== null && p.jogosGoleiro >= 3);
         if(gks.length > 0) grid.innerHTML += createBox('Goleiros (Média)', 'mediaGolsSofridos', '', true, gks);
-        
         grid.innerHTML += createBox('Aproveitamento', 'aproveitamento', '%', false);
     }
 
     window.openFullRanking = (title, key, reverse) => {
         const players = allPlayersData; 
         const sorted = [...players].sort((a,b) => reverse ? a[key]-b[key] : b[key]-a[key]);
-        let html = `<table class="w-full text-left text-sm text-gray-300">
-            <thead class="text-xs uppercase bg-white/5 text-gray-400 sticky top-0 backdrop-blur-md"><tr><th class="p-4">#</th><th class="p-4">Jogador</th><th class="p-4 text-right">Valor</th></tr></thead>
-            <tbody>`;
+        let html = `<table class="w-full text-left text-sm text-gray-300"><thead class="text-xs uppercase bg-white/5 text-gray-400 sticky top-0 backdrop-blur-md"><tr><th class="p-4">#</th><th class="p-4">Jogador</th><th class="p-4 text-right">Valor</th></tr></thead><tbody>`;
         sorted.forEach((p, i) => {
-            html += `<tr class="border-b border-white/5 hover:bg-white/5 cursor-pointer transition" onclick="window.openPlayerModal('${p.nome}')">
-                <td class="p-4 font-bold font-mono ${i<3?'text-yellow-500':''}">${i+1}</td>
-                <td class="p-4 flex items-center gap-4">
-                    <img src="${playerPhotos[p.nome]||''}" class="w-8 h-8 rounded-full object-cover" onerror="this.src='https://ui-avatars.com/api/?name=${p.nome}'">
-                    <span class="font-medium text-white">${p.nomeOriginal}</span>
-                </td>
-                <td class="p-4 text-right font-mono font-bold text-blue-400">${typeof p[key]==='number'?p[key].toFixed(2):p[key]}</td>
-            </tr>`;
+            html += `<tr class="border-b border-white/5 hover:bg-white/5 cursor-pointer transition" onclick="window.openPlayerModal('${p.nome}')"><td class="p-4 font-bold font-mono ${i<3?'text-yellow-500':''}">${i+1}</td><td class="p-4 flex items-center gap-4"><img src="${playerPhotos[p.nome]||''}" class="w-8 h-8 rounded-full object-cover" onerror="this.src='https://ui-avatars.com/api/?name=${p.nome}'"><span class="font-medium text-white">${p.nomeOriginal}</span></td><td class="p-4 text-right font-mono font-bold text-blue-400">${typeof p[key]==='number'?p[key].toFixed(2):p[key]}</td></tr>`;
         });
         html += `</tbody></table>`;
         document.getElementById('full-list-title').innerText = title;
@@ -929,22 +841,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderSelectionField(players) {
         const getBest = (pos, count) => players.filter(p => p.posicaoPref === pos).sort((a,b) => b.notaGeral - a.notaGeral).slice(0, count);
         const team = { ata: getBest('ata', 2), mei: getBest('mei', 1), ala: getBest('ala', 2), zag: getBest('zag', 1), gol: getBest('gol', 1) };
-        const posStyles = {
-            gol: ['bottom: 5%; left: 50%; transform: translateX(-50%)'],
-            zag: ['bottom: 22%; left: 50%; transform: translateX(-50%)'],
-            ala: ['bottom: 40%; left: 10%', 'bottom: 40%; right: 10%'],
-            mei: ['top: 48%; left: 50%; transform: translate(-50%, -50%)'],
-            ata: ['top: 18%; left: 25%', 'top: 18%; right: 25%']
-        };
+        const posStyles = { gol: ['bottom: 5%; left: 50%; transform: translateX(-50%)'], zag: ['bottom: 22%; left: 50%; transform: translateX(-50%)'], ala: ['bottom: 40%; left: 10%', 'bottom: 40%; right: 10%'], mei: ['top: 48%; left: 50%; transform: translate(-50%, -50%)'], ata: ['top: 18%; left: 25%', 'top: 18%; right: 25%'] };
         let html = '';
-        const renderP = (p, style) => `
-            <div class="absolute flex flex-col items-center transition-all duration-300 hover:scale-110 cursor-pointer z-10 group" style="${style}" onclick="window.openPlayerModal('${p.nome}')">
-                <div class="relative">
-                    <img src="${playerPhotos[p.nome]||''}" class="w-10 h-10 md:w-14 md:h-14 rounded-full border-2 border-yellow-400 shadow-[0_0_20px_rgba(234,179,8,0.4)] object-cover bg-gray-900" onerror="this.src='https://ui-avatars.com/api/?name=${p.nome}'">
-                    <div class="absolute -bottom-1 -right-1 bg-black/80 text-yellow-400 text-[9px] md:text-[10px] font-bold px-1.5 py-0.5 rounded border border-yellow-400/30 font-mono">${p.notaGeral.toFixed(1)}</div>
-                </div>
-                <div class="bg-black/60 backdrop-blur-sm px-2 py-0.5 rounded mt-1 text-[9px] md:text-[10px] text-white font-bold tracking-wider border border-white/10 shadow-lg truncate max-w-[70px] md:max-w-[80px] group-hover:bg-blue-600 transition-colors">${p.nomeOriginal.split(' ')[0]}</div>
-            </div>`;
+        const renderP = (p, style) => `<div class="absolute flex flex-col items-center transition-all duration-300 hover:scale-110 cursor-pointer z-10 group" style="${style}" onclick="window.openPlayerModal('${p.nome}')"><div class="relative"><img src="${playerPhotos[p.nome]||''}" class="w-10 h-10 md:w-14 md:h-14 rounded-full border-2 border-yellow-400 shadow-[0_0_20px_rgba(234,179,8,0.4)] object-cover bg-gray-900" onerror="this.src='https://ui-avatars.com/api/?name=${p.nome}'"><div class="absolute -bottom-1 -right-1 bg-black/80 text-yellow-400 text-[9px] md:text-[10px] font-bold px-1.5 py-0.5 rounded border border-yellow-400/30 font-mono">${p.notaGeral.toFixed(1)}</div></div><div class="bg-black/60 backdrop-blur-sm px-2 py-0.5 rounded mt-1 text-[9px] md:text-[10px] text-white font-bold tracking-wider border border-white/10 shadow-lg truncate max-w-[70px] md:max-w-[80px] group-hover:bg-blue-600 transition-colors">${p.nomeOriginal.split(' ')[0]}</div></div>`;
         if(team.gol[0]) html += renderP(team.gol[0], posStyles.gol[0]);
         if(team.zag[0]) html += renderP(team.zag[0], posStyles.zag[0]);
         team.ala.forEach((p, i) => html += renderP(p, posStyles.ala[i]));
@@ -957,38 +856,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderSpecialRankings(players, matches) {
         const garcom = [...players].sort((a,b) => b.assistencias - a.assistencias)[0];
-        if(garcom) {
-             document.getElementById('assist-leader-content').innerHTML = `
-                <img src="${playerPhotos[garcom.nome]||''}" class="w-10 h-10 rounded-full border-2 border-yellow-500 object-cover shadow-lg">
-                <div><div class="font-bold text-white text-xs">${garcom.nomeOriginal.split(' ')[0]}</div><div class="text-[10px] text-yellow-500 font-mono font-bold bg-yellow-500/10 px-1 rounded">${garcom.assistencias} ASSIST</div></div>`;
-        }
+        if(garcom) { document.getElementById('assist-leader-content').innerHTML = `<img src="${playerPhotos[garcom.nome]||''}" class="w-10 h-10 rounded-full border-2 border-yellow-500 object-cover shadow-lg"><div><div class="font-bold text-white text-xs">${garcom.nomeOriginal.split(' ')[0]}</div><div class="text-[10px] text-yellow-500 font-mono font-bold bg-yellow-500/10 px-1 rounded">${garcom.assistencias} ASSIST</div></div>`; }
         const gks = players.filter(p => p.mediaGolsSofridos !== null && p.jogosGoleiro >= 3).sort((a,b) => a.mediaGolsSofridos - b.mediaGolsSofridos);
-        if(gks[0]) {
-            document.getElementById('paredao-content').innerHTML = `
-                <img src="${playerPhotos[gks[0].nome]||''}" class="w-10 h-10 rounded-full border-2 border-blue-500 object-cover shadow-lg">
-                <div><div class="font-bold text-white text-xs">${gks[0].nomeOriginal.split(' ')[0]}</div><div class="text-[10px] text-blue-400 font-mono font-bold bg-blue-500/10 px-1 rounded">${gks[0].mediaGolsSofridos.toFixed(2)} Gols/J</div></div>`;
-        }
+        if(gks[0]) { document.getElementById('paredao-content').innerHTML = `<img src="${playerPhotos[gks[0].nome]||''}" class="w-10 h-10 rounded-full border-2 border-blue-500 object-cover shadow-lg"><div><div class="font-bold text-white text-xs">${gks[0].nomeOriginal.split(' ')[0]}</div><div class="text-[10px] text-blue-400 font-mono font-bold bg-blue-500/10 px-1 rounded">${gks[0].mediaGolsSofridos.toFixed(2)} Gols/J</div></div>`; }
         const topS = [...players].sort((a,b) => b.gols - a.gols)[0];
-        if(topS) {
-            document.getElementById('top-scorer-content').innerHTML = `
-                <img src="${playerPhotos[topS.nome]||''}" class="w-10 h-10 rounded-full border-2 border-green-500 object-cover shadow-lg">
-                <div><div class="font-bold text-white text-xs">${topS.nomeOriginal.split(' ')[0]}</div><div class="text-[10px] text-green-400 font-mono font-bold bg-green-500/10 px-1 rounded">${topS.gols} GOLS</div></div>`;
-        }
+        if(topS) { document.getElementById('top-scorer-content').innerHTML = `<img src="${playerPhotos[topS.nome]||''}" class="w-10 h-10 rounded-full border-2 border-green-500 object-cover shadow-lg"><div><div class="font-bold text-white text-xs">${topS.nomeOriginal.split(' ')[0]}</div><div class="text-[10px] text-green-400 font-mono font-bold bg-green-500/10 px-1 rounded">${topS.gols} GOLS</div></div>`; }
     }
 
     function renderHall(players) {
         const topPlayers = players.filter(p => p.conquistas.length > 0 || p.nivel === 'Lenda').sort((a,b) => b.conquistas.length - a.conquistas.length);
-        const html = topPlayers.map(p => `
-            <div class="glass-panel p-4 md:p-6 rounded-xl flex flex-col items-center relative overflow-hidden group hover:border-white/20 transition cursor-pointer" onclick="window.openPlayerModal('${p.nome}')">
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
-                <div class="absolute top-2 right-2 bg-yellow-500/20 text-yellow-400 text-xs px-2 py-1 rounded-full font-bold border border-yellow-500/30 shadow-[0_0_10px_rgba(234,179,8,0.2)]">${p.conquistas.length} <i class="fas fa-trophy ml-1"></i></div>
-                <img src="${playerPhotos[p.nome]||''}" class="w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-white/10 object-cover mb-3 shadow-xl group-hover:scale-105 transition-transform" onerror="this.src='https://ui-avatars.com/api/?name=${p.nome}'">
-                <h3 class="font-bold text-lg text-white mb-1">${p.nomeOriginal.split(' ')[0]}</h3>
-                <div class="flex flex-wrap justify-center gap-1 w-full mt-2">
-                    ${p.conquistas.slice(0, 4).map(c => `<span class="w-2 h-2 rounded-full bg-${c.rarity === 'lendario' ? 'yellow-500' : c.rarity === 'mitico' ? 'purple-500' : 'blue-400'}" title="${c.nome}"></span>`).join('')}
-                </div>
-            </div>
-        `).join('');
+        const html = topPlayers.map(p => `<div class="glass-panel p-4 md:p-6 rounded-xl flex flex-col items-center relative overflow-hidden group hover:border-white/20 transition cursor-pointer" onclick="window.openPlayerModal('${p.nome}')"><div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div><div class="absolute top-2 right-2 bg-yellow-500/20 text-yellow-400 text-xs px-2 py-1 rounded-full font-bold border border-yellow-500/30 shadow-[0_0_10px_rgba(234,179,8,0.2)]">${p.conquistas.length} <i class="fas fa-trophy ml-1"></i></div><img src="${playerPhotos[p.nome]||''}" class="w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-white/10 object-cover mb-3 shadow-xl group-hover:scale-105 transition-transform" onerror="this.src='https://ui-avatars.com/api/?name=${p.nome}'"><h3 class="font-bold text-lg text-white mb-1">${p.nomeOriginal.split(' ')[0]}</h3><div class="flex flex-wrap justify-center gap-1 w-full mt-2">${p.conquistas.slice(0, 4).map(c => `<span class="w-2 h-2 rounded-full bg-${c.rarity === 'lendario' ? 'yellow-500' : c.rarity === 'mitico' ? 'purple-500' : 'blue-400'}" title="${c.nome}"></span>`).join('')}</div></div>`).join('');
         document.getElementById('hall-grid').innerHTML = html || '<p class="text-gray-500 col-span-3 text-center py-8">Ainda não há conquistas registradas nesta temporada.</p>';
     }
     
@@ -1013,18 +890,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if(involved) facts.push({ icon: 'fa-handshake', color: 'text-teal-400', title: 'O Onipresente', text: `<strong>${involved.nomeOriginal.split(' ')[0]}</strong> participa de ${(involved.ga/involved.jogos).toFixed(1)} gols por jogo.` });
         const oneDayKing = matches.filter(m=>m.jogoAconteceu).sort((a,b) => b.gols - a.gols)[0];
         if(oneDayKing) facts.push({ icon: 'fa-crown', color: 'text-yellow-500', title: 'Artilheiro de Um Dia', text: `<strong>${oneDayKing.nomeRaw.split(' ')[0]}</strong> fez história com <strong>${oneDayKing.gols} gols</strong> em uma única partida.` });
-
-        facts.forEach(f => {
-            container.innerHTML += `
-                <div class="glass-panel p-4 rounded-xl border border-white/5 flex items-start gap-4 hover:bg-white/5 transition">
-                    <div class="p-2 md:p-3 rounded-full bg-white/5 ${f.color} text-lg md:text-xl min-w-[3rem] text-center flex items-center justify-center"><i class="fas ${f.icon}"></i></div>
-                    <div>
-                        <h4 class="font-bold text-white text-xs md:text-sm uppercase mb-1">${f.title}</h4>
-                        <p class="text-[10px] md:text-xs text-gray-400 leading-relaxed">${f.text}</p>
-                    </div>
-                </div>
-            `;
-        });
+        facts.forEach(f => { container.innerHTML += `<div class="glass-panel p-4 rounded-xl border border-white/5 flex items-start gap-4 hover:bg-white/5 transition"><div class="p-2 md:p-3 rounded-full bg-white/5 ${f.color} text-lg md:text-xl min-w-[3rem] text-center flex items-center justify-center"><i class="fas ${f.icon}"></i></div><div><h4 class="font-bold text-white text-xs md:text-sm uppercase mb-1">${f.title}</h4><p class="text-[10px] md:text-xs text-gray-400 leading-relaxed">${f.text}</p></div></div>`; });
     }
 
     function renderStatsCharts(players, matches) {
@@ -1032,27 +898,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const ctx = document.getElementById(id); if(!ctx) return;
             if(chartInstances[id]) chartInstances[id].destroy();
             const s = d.sort((a,b)=>b.v-a.v).slice(0,10);
-            chartInstances[id] = new Chart(ctx, {
-                type: 'bar',
-                data: { labels: s.map(x=>x.n), datasets: [{label:l, data:s.map(x=>x.v), backgroundColor:c, borderRadius:4}] },
-                options: { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}, title:{display:true, text:l, color:'#fff', font:{family:'Rajdhani', size:16}}}, scales:{y:{grid:{color:'rgba(255,255,255,0.05)'}, ticks:{color:'#94a3b8'}}, x:{grid:{display:false}, ticks:{color:'#94a3b8'}}} }
-            });
+            chartInstances[id] = new Chart(ctx, { type: 'bar', data: { labels: s.map(x=>x.n), datasets: [{label:l, data:s.map(x=>x.v), backgroundColor:c, borderRadius:4}] }, options: { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}, title:{display:true, text:l, color:'#fff', font:{family:'Rajdhani', size:16}}}, scales:{y:{grid:{color:'rgba(255,255,255,0.05)'}, ticks:{color:'#94a3b8'}}, x:{grid:{display:false}, ticks:{color:'#94a3b8'}}} } });
         };
         createChart('chart-gols', 'Top Artilheiros', players.map(p=>({n:p.nomeOriginal.split(' ')[0], v:p.gols})), '#4ade80');
         createChart('chart-assists', 'Top Assistências', players.map(p=>({n:p.nomeOriginal.split(' ')[0], v:p.assistencias})), '#facc15');
         createChart('chart-games', 'Mais Jogos', players.map(p=>({n:p.nomeOriginal.split(' ')[0], v:p.jogos})), '#60a5fa');
-
         const ctxGroup = document.getElementById('chart-group-goals');
         if(ctxGroup) {
             if(chartInstances['group']) chartInstances['group'].destroy();
             const months = {};
             matches.filter(m=>m.jogoAconteceu).forEach(m => { const k = m.dataJogo.substring(3); months[k] = (months[k] || 0) + m.gols; });
             const labels = Object.keys(months).sort((a,b) => new Date(a.split('/').reverse().join('-')) - new Date(b.split('/').reverse().join('-')));
-            chartInstances['group'] = new Chart(ctxGroup, {
-                type: 'line',
-                data: { labels: labels, datasets: [{ label: 'Gols do Grupo', data: labels.map(l=>months[l]), borderColor:'#f472b6', backgroundColor:'rgba(244,114,182,0.1)', fill:true, tension:0.4 }] },
-                options: { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}, title:{display:true, text:'Evolução de Gols (Mensal)', color:'#fff'}}, scales:{y:{grid:{color:'rgba(255,255,255,0.05)'}}, x:{ticks:{color:'#94a3b8'}}} }
-            });
+            chartInstances['group'] = new Chart(ctxGroup, { type: 'line', data: { labels: labels, datasets: [{ label: 'Gols do Grupo', data: labels.map(l=>months[l]), borderColor:'#f472b6', backgroundColor:'rgba(244,114,182,0.1)', fill:true, tension:0.4 }] }, options: { responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}, title:{display:true, text:'Evolução de Gols (Mensal)', color:'#fff'}}, scales:{y:{grid:{color:'rgba(255,255,255,0.05)'}}, x:{ticks:{color:'#94a3b8'}}} } });
         }
     }
 
@@ -1061,22 +918,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if(!p) return;
         const stats = p.fifa;
         const container = document.getElementById('modal-card-container');
-        
         container.className = 'fut-card-container relative group';
         container.classList.add(stats.cssClass); 
-        
         document.getElementById('card-ovr').innerText = stats.ovr;
         document.getElementById('card-pos').innerText = p.posicaoPref.substring(0,3).toUpperCase();
         document.getElementById('card-img').src = playerPhotos[p.nome] || '';
         document.getElementById('card-name').innerText = p.nomeOriginal.split(' ')[0];
-        
-        document.getElementById('stat-pac').innerText = stats.pac; 
-        document.getElementById('stat-sho').innerText = stats.sho;
-        document.getElementById('stat-pas').innerText = stats.pas; 
-        document.getElementById('stat-def').innerText = stats.def;
-        document.getElementById('stat-phy').innerText = stats.phy; 
-        document.getElementById('stat-jog').innerText = p.jogos;
-
+        document.getElementById('stat-pac').innerText = stats.pac; document.getElementById('stat-sho').innerText = stats.sho;
+        document.getElementById('stat-pas').innerText = stats.pas; document.getElementById('stat-def').innerText = stats.def;
+        document.getElementById('stat-phy').innerText = stats.phy; document.getElementById('stat-jog').innerText = p.jogos;
         document.getElementById('detail-name').innerText = p.nomeOriginal;
         document.getElementById('detail-level').innerText = p.nivel;
         document.getElementById('detail-media').innerText = p.notaGeral.toFixed(2);
@@ -1084,23 +934,14 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('detail-assist').innerText = p.assistencias;
         document.getElementById('detail-wins').innerText = p.vitorias;
         document.getElementById('detail-history').innerHTML = p.partidas.slice().reverse().slice(0, 5).map(m => `<div class="flex justify-between text-xs p-2 md:p-3 bg-white/5 rounded mb-1 border border-white/5"><span class="text-gray-400 font-mono">${m.dataJogo}</span><div class="flex gap-2">${m.gols>0?`<span class="bg-green-500/20 text-green-400 px-1 rounded">${m.gols}G</span>`:''} <span class="font-bold text-white">${m.notaPartida.toFixed(1)}</span></div></div>`).join('');
-        
         const badgeContainer = document.getElementById('detail-badges');
-        if(p.conquistas && p.conquistas.length > 0) {
-            badgeContainer.innerHTML = p.conquistas.map(c => `<span class="achievement-badge rarity-${c.rarity}" title="${c.desc}"><i class="fas ${c.icon} mr-1"></i>${c.nome}</span>`).join('');
-        } else badgeContainer.innerHTML = '<span class="text-xs text-gray-600 italic">Nenhuma conquista ainda.</span>';
-
+        if(p.conquistas && p.conquistas.length > 0) { badgeContainer.innerHTML = p.conquistas.map(c => `<span class="achievement-badge rarity-${c.rarity}" title="${c.desc}"><i class="fas ${c.icon} mr-1"></i>${c.nome}</span>`).join(''); } else badgeContainer.innerHTML = '<span class="text-xs text-gray-600 italic">Nenhuma conquista ainda.</span>';
         const ctx = document.getElementById('player-evo-chart');
         if(ctx) {
             if(chartInstances['playerEvo']) chartInstances['playerEvo'].destroy();
             const matches = p.partidas.slice(-10);
-            chartInstances['playerEvo'] = new Chart(ctx, {
-                type: 'line',
-                data: { labels: matches.map(m => m.dataJogo.substring(0, 5)), datasets: [{ label: 'Nota', data: matches.map(m => m.notaPartida), borderColor: '#3b82f6', backgroundColor: 'rgba(59, 130, 246, 0.1)', borderWidth: 2, pointRadius: 3, fill: true, tension: 0.3 }] },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { min: 4, max: 10, grid: { color: 'rgba(255,255,255,0.05)' }, ticks:{ color:'#aaa' } }, x: { display: false } } }
-            });
+            chartInstances['playerEvo'] = new Chart(ctx, { type: 'line', data: { labels: matches.map(m => m.dataJogo.substring(0, 5)), datasets: [{ label: 'Nota', data: matches.map(m => m.notaPartida), borderColor: '#3b82f6', backgroundColor: 'rgba(59, 130, 246, 0.1)', borderWidth: 2, pointRadius: 3, fill: true, tension: 0.3 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { min: 4, max: 10, grid: { color: 'rgba(255,255,255,0.05)' }, ticks:{ color:'#aaa' } }, x: { display: false } } } });
         }
-
         const modal = document.getElementById('player-modal');
         modal.classList.remove('hidden'); modal.classList.add('flex');
     };
@@ -1108,31 +949,46 @@ document.addEventListener('DOMContentLoaded', () => {
     window.openMatchModal = (date) => {
         const matches = allMatchesData.filter(m => m.dataJogo === date);
         if(!matches.length) return;
+        
+        // Reset print
+        const modal = document.getElementById('match-modal');
+        modal.classList.remove('print-active');
+        const btn = document.getElementById('print-btn');
+        btn.classList.remove('bg-green-600'); btn.classList.add('bg-blue-600'); btn.querySelector('i').className = 'fas fa-camera';
+
         const happened = matches.some(m => m.jogoAconteceu);
         let scoreA = 0, scoreB = 0;
-        let boca = matches.filter(m => m.time.toUpperCase().includes('BOCA'));
-        let river = matches.filter(m => m.time.toUpperCase().includes('RIVER'));
-        
-        if (happened) {
-            scoreA = boca.reduce((a,b) => a + b.gols, 0);
-            scoreB = river.reduce((a,b) => a + b.gols, 0);
-        }
+        let boca = matches.filter(m => m.time.toUpperCase().includes('BOCA')).sort((a,b) => b.notaPartida - a.notaPartida);
+        let river = matches.filter(m => m.time.toUpperCase().includes('RIVER')).sort((a,b) => b.notaPartida - a.notaPartida);
+        if (happened) { scoreA = boca.reduce((a,b) => a + b.gols, 0); scoreB = river.reduce((a,b) => a + b.gols, 0); }
 
         document.getElementById('match-date').innerText = `RESUMO: ${date}`;
         document.getElementById('score-a').innerText = happened ? scoreA : '-';
         document.getElementById('score-b').innerText = happened ? scoreB : '-';
 
-        const renderList = (team) => team.map(p => `
-            <div class="flex justify-between items-center p-2 bg-white/5 rounded mb-1 border border-white/5 hover:bg-white/10 transition" style="cursor: pointer;" onclick="window.openPlayerModal('${p.nome}')">
-                <div class="flex items-center gap-2 text-sm text-gray-300">
-                    <span class="text-xs opacity-50 w-4">${p.posicao.toUpperCase().substring(0,1)}</span>
-                    <span class="font-medium text-white truncate max-w-[80px] md:max-w-none">${p.nomeRaw.split(' ')[0]}</span>
-                    ${p.isGoleiro ? '<span class="badge badge-gk">GK</span>' : ''}
-                    ${happened && p.gols > 0 ? `<span class="badge badge-gol">${p.gols}G</span>` : ''}
+        const renderList = (team) => team.map(p => {
+            const posLabel = getPos3Letters(p.posicao);
+            let posColor = 'bg-gray-700 text-gray-300';
+            if(posLabel === 'ATA') posColor = 'bg-blue-500/20 text-blue-300 border border-blue-500/30';
+            if(posLabel === 'MEI') posColor = 'bg-green-500/20 text-green-300 border border-green-500/30';
+            if(posLabel === 'ALA') posColor = 'bg-purple-500/20 text-purple-300 border border-purple-500/30';
+            if(posLabel === 'ZAG') posColor = 'bg-orange-500/20 text-orange-300 border border-orange-500/30';
+            if(posLabel === 'GOL') posColor = 'bg-yellow-500/20 text-yellow-300 border border-yellow-500/30';
+
+            return `<div class="flex justify-between items-center p-2 bg-white/5 rounded border border-white/5 hover:bg-white/10 transition cursor-pointer group" onclick="window.openPlayerModal('${p.nome}')">
+                <div class="flex items-center gap-2">
+                    <span class="text-[9px] font-bold w-8 text-center py-0.5 rounded ${posColor}">${posLabel}</span>
+                    <div class="flex flex-col">
+                        <span class="font-medium text-white text-xs group-hover:text-blue-400 transition truncate max-w-[100px]">${p.nomeRaw.split(' ')[0]}</span>
+                        <div class="flex gap-1 h-3 items-center">
+                             ${happened && p.gols > 0 ? `<span class="text-[8px] bg-green-500/20 text-green-400 px-1 rounded border border-green-500/20 font-bold">${p.gols}G</span>` : ''}
+                             ${happened && p.assistencias > 0 ? `<span class="text-[8px] bg-blue-500/20 text-blue-400 px-1 rounded border border-blue-500/20 font-bold">${p.assistencias}A</span>` : ''}
+                        </div>
+                    </div>
                 </div>
-                ${happened ? `<div class="font-mono font-bold text-yellow-400 text-xs">${p.notaPartida.toFixed(1)}</div>` : ''}
-            </div>
-        `).join('');
+                ${happened ? `<div class="font-mono font-bold text-sm ${p.notaPartida >= 8 ? 'text-yellow-400' : p.notaPartida >= 6 ? 'text-white' : 'text-gray-500'}">${p.notaPartida.toFixed(1)}</div>` : ''}
+            </div>`;
+        }).join('');
 
         document.getElementById('list-boca').innerHTML = renderList(boca);
         document.getElementById('list-river').innerHTML = renderList(river);
@@ -1142,23 +998,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const getPos = (pos, count, exclude) => matches.filter(p => p.posicao === pos && !exclude.includes(p)).sort((a,b) => b.notaPartida - a.notaPartida).slice(0, count);
             let sel = [];
             const team = { gol: getPos('gol',1,sel), zag: getPos('zag',1,sel), ala: getPos('ala',2,sel), mei: getPos('mei',1,sel), ata: getPos('ata',2,sel) };
-            
-            const renderP = (p, style) => `
-                <div class="absolute flex flex-col items-center transform -translate-x-1/2 z-10" style="${style}" onclick="window.openPlayerModal('${p.nome}')">
-                    <img src="${playerPhotos[p.nome]||''}" class="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-yellow-400 shadow-lg bg-black object-cover" onerror="this.src='https://ui-avatars.com/api/?name=${p.nome}'">
-                    <div class="bg-black/80 px-2 rounded mt-1 text-[8px] md:text-[9px] text-white font-bold truncate max-w-[60px] text-center border border-white/20">${p.nomeRaw.split(' ')[0]}</div>
-                    <div class="text-yellow-400 text-[8px] md:text-[9px] font-bold -mt-6 md:-mt-7 ml-5 md:ml-6 bg-black/80 px-1 rounded border border-yellow-500/30">${p.notaPartida.toFixed(1)}</div>
-                </div>`;
-            
+            const renderP = (p, style) => `<div class="absolute flex flex-col items-center transform -translate-x-1/2 z-10 hover:scale-110 transition cursor-pointer" style="${style}" onclick="window.openPlayerModal('${p.nome}')"><div class="relative"><img src="${playerPhotos[p.nome]||''}" class="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-yellow-400 shadow-lg bg-black object-cover" onerror="this.src='https://ui-avatars.com/api/?name=${p.nome}'"><div class="absolute -bottom-1 -right-1 bg-black/90 text-yellow-400 text-[8px] font-bold px-1 rounded border border-yellow-400/50">${p.notaPartida.toFixed(1)}</div></div><div class="bg-black/80 px-1.5 py-0.5 rounded mt-0.5 text-[8px] text-white font-bold truncate max-w-[70px] text-center border border-white/20 backdrop-blur-sm">${p.nomeRaw.split(' ')[0]}</div></div>`;
             if(team.gol[0]) html += renderP(team.gol[0], 'bottom: 5%; left: 50%');
-            if(team.zag[0]) html += renderP(team.zag[0], 'bottom: 22%; left: 50%');
-            team.ala.forEach((p,i) => html += renderP(p, `bottom: 40%; ${i===0?'left: 15%':'right: 15%'}`));
-            team.mei.forEach((p,i) => html += renderP(p, 'top: 48%; left: 50%'));
-            team.ata.forEach((p,i) => html += renderP(p, `top: 18%; ${i===0?'left: 30%':'right: 30%'}`));
+            if(team.zag[0]) html += renderP(team.zag[0], 'bottom: 20%; left: 50%');
+            team.ala.forEach((p,i) => html += renderP(p, `bottom: 45%; ${i===0?'left: 12%':'right: 12%'}`));
+            team.mei.forEach((p,i) => html += renderP(p, 'top: 45%; left: 50%'));
+            team.ata.forEach((p,i) => html += renderP(p, `top: 15%; ${i===0?'left: 25%':'right: 25%'}`));
         } else {
-            html = '<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-gray-400 text-xs md:text-sm font-bold bg-black/50 px-4 py-2 rounded border border-white/10 text-center">AGUARDANDO INÍCIO</div>';
+            html = '<div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-gray-400 font-bold bg-black/50 px-4 py-2 rounded border border-white/10 text-center text-xs">AGUARDANDO</div>';
         }
-        
         document.getElementById('match-team-display').innerHTML = html;
         const modal = document.getElementById('match-modal');
         modal.classList.remove('hidden'); modal.classList.add('flex');
@@ -1172,157 +1020,59 @@ document.addEventListener('DOMContentLoaded', () => {
             const happened = ms.some(x => x.jogoAconteceu);
             const ga = ms.filter(x => x.time.toUpperCase().includes('BOCA')).reduce((a,b)=>a+b.gols,0);
             const gb = ms.filter(x => x.time.toUpperCase().includes('RIVER')).reduce((a,b)=>a+b.gols,0);
-            return `<div class="glass-panel p-4 rounded-xl flex justify-between items-center border border-white/5 hover:bg-white/5 transition cursor-pointer" onclick="window.openMatchModal('${d}')">
-                <span class="text-gray-400 text-xs md:text-sm font-mono">${d}</span>
-                ${happened ? `<span class="font-bold text-white text-lg md:text-xl font-fifa"><span class="text-blue-400">BOCA ${ga}</span> <span class="text-gray-600 text-xs md:text-sm mx-1 md:mx-2">VS</span> <span class="text-red-400">${gb} RIVER</span></span>` : '<span class="text-[10px] md:text-xs bg-white/10 px-2 py-1 rounded text-gray-400">AGENDADO</span>'}
-            </div>`;
+            return `<div class="glass-panel p-4 rounded-xl flex justify-between items-center border border-white/5 hover:bg-white/5 transition cursor-pointer" onclick="window.openMatchModal('${d}')"><span class="text-gray-400 text-xs md:text-sm font-mono">${d}</span>${happened ? `<span class="font-bold text-white text-lg md:text-xl font-fifa"><span class="text-blue-400">BOCA ${ga}</span> <span class="text-gray-600 text-xs md:text-sm mx-1 md:mx-2">VS</span> <span class="text-red-400">${gb} RIVER</span></span>` : '<span class="text-[10px] md:text-xs bg-white/10 px-2 py-1 rounded text-gray-400">AGENDADO</span>'}</div>`;
         }).join('');
     }
 
     function renderDraftList(players) {
         const list = document.getElementById('draft-list');
-        list.innerHTML = players.sort((a,b) => a.nomeOriginal.localeCompare(b.nomeOriginal)).map(p => `
-            <div class="flex items-center justify-between p-2 hover:bg-white/5 rounded cursor-pointer group transition" onclick="window.toggleDraftSelection(this)">
-                <div class="flex items-center gap-2 md:gap-3">
-                    <div class="w-4 h-4 rounded border border-gray-600 flex items-center justify-center draft-chk-box text-xs text-transparent transition">✓</div>
-                    <input type="checkbox" value="${p.nome}" class="draft-chk hidden" data-pos="${p.posicaoPref}">
-                    <img src="${playerPhotos[p.nome] || ''}" class="w-6 h-6 rounded-full object-cover opacity-70 group-hover:opacity-100">
-                    <div class="flex flex-col">
-                        <span class="text-xs md:text-sm text-gray-400 group-hover:text-white transition">${p.nomeOriginal}</span>
-                        <span class="text-[9px] text-gray-600 uppercase">${p.posicaoPref}</span>
-                    </div>
-                </div>
-                <span class="text-xs font-bold text-gray-600 group-hover:text-yellow-500 font-mono transition">${p.fifa.ovr}</span>
-            </div>
-        `).join('');
+        list.innerHTML = players.sort((a,b) => a.nomeOriginal.localeCompare(b.nomeOriginal)).map(p => `<div class="flex items-center justify-between p-2 hover:bg-white/5 rounded cursor-pointer group transition" onclick="window.toggleDraftSelection(this)"><div class="flex items-center gap-2 md:gap-3"><div class="w-4 h-4 rounded border border-gray-600 flex items-center justify-center draft-chk-box text-xs text-transparent transition">✓</div><input type="checkbox" value="${p.nome}" class="draft-chk hidden" data-pos="${p.posicaoPref}"><img src="${playerPhotos[p.nome] || ''}" class="w-6 h-6 rounded-full object-cover opacity-70 group-hover:opacity-100"><div class="flex flex-col"><span class="text-xs md:text-sm text-gray-400 group-hover:text-white transition">${p.nomeOriginal}</span><span class="text-[9px] text-gray-600 uppercase">${p.posicaoPref}</span></div></div><span class="text-xs font-bold text-gray-600 group-hover:text-yellow-500 font-mono transition">${p.fifa.ovr}</span></div>`).join('');
     }
 
     window.toggleDraftSelection = (div) => {
-        const chk = div.querySelector('.draft-chk');
-        const box = div.querySelector('.draft-chk-box');
-        chk.checked = !chk.checked;
-        if(chk.checked) {
-            box.classList.remove('text-transparent', 'border-gray-600');
-            box.classList.add('bg-blue-500', 'border-blue-500', 'text-white');
-            div.classList.add('bg-white/10');
-        } else {
-            box.classList.add('text-transparent', 'border-gray-600');
-            box.classList.remove('bg-blue-500', 'border-blue-500', 'text-white');
-            div.classList.remove('bg-white/10');
-        }
+        const chk = div.querySelector('.draft-chk'); const box = div.querySelector('.draft-chk-box'); chk.checked = !chk.checked;
+        if(chk.checked) { box.classList.remove('text-transparent', 'border-gray-600'); box.classList.add('bg-blue-500', 'border-blue-500', 'text-white'); div.classList.add('bg-white/10'); } else { box.classList.add('text-transparent', 'border-gray-600'); box.classList.remove('bg-blue-500', 'border-blue-500', 'text-white'); div.classList.remove('bg-white/10'); }
         document.getElementById('selected-count').innerText = `${document.querySelectorAll('.draft-chk:checked').length} JOG`;
     }
 
     function generateTeams() {
         const selectedEl = Array.from(document.querySelectorAll('.draft-chk:checked'));
         if(selectedEl.length < 2) return alert('Selecione ao menos 2 jogadores');
-        
         const selectedNames = selectedEl.map(c => c.value);
         const pool = allPlayersData.filter(p => selectedNames.includes(p.nome));
         const gks = pool.filter(p => p.posicaoPref === 'gol').sort((a,b) => b.fifa.ovr - a.fifa.ovr);
         const outfield = pool.filter(p => p.posicaoPref !== 'gol').sort((a,b) => b.fifa.ovr - a.fifa.ovr);
-
         const teamA = [], teamB = [];
-        if(gks.length > 0) teamA.push(gks[0]);
-        if(gks.length > 1) teamB.push(gks[1]);
-        if(gks.length > 2) outfield.push(...gks.slice(2));
-        
-        outfield.forEach((p, i) => { 
-            if (i % 4 === 0 || i % 4 === 3) teamB.push(p); 
-            else teamA.push(p); 
-        });
-
-        const calcStats = (team) => ({ ovr: (team.reduce((a,p)=>a+p.fifa.ovr,0)/team.length).toFixed(1), goals: team.reduce((a,p)=>a+p.gols,0), xp: team.reduce((a,p)=>a+p.jogos,0) });
+        if(gks.length > 0) teamA.push(gks[0]); if(gks.length > 1) teamB.push(gks[1]); if(gks.length > 2) outfield.push(...gks.slice(2));
+        outfield.forEach((p, i) => { if (i % 4 === 0 || i % 4 === 3) teamB.push(p); else teamA.push(p); });
+        const calcStats = (team) => ({ ovr: (team.reduce((a,p)=>a+p.fifa.ovr,0)/team.length).toFixed(1) });
         const sa = calcStats(teamA), sb = calcStats(teamB);
-        
-        const renderT = (t) => t.map(p => `
-            <div class="flex justify-between text-xs md:text-sm py-1.5 border-b border-white/5 text-gray-300">
-                <div class="flex items-center gap-2">
-                    ${p.posicaoPref === 'gol' ? '<span class="text-[9px] bg-yellow-500/20 text-yellow-500 px-1 rounded">GK</span>' : ''}
-                    <span>${p.nomeOriginal}</span>
-                </div>
-                <span class="text-yellow-500 font-bold font-mono">${p.fifa.ovr}</span>
-            </div>`).join('');
-            
-        document.getElementById('list-team-a').innerHTML = renderT(teamA);
-        document.getElementById('list-team-b').innerHTML = renderT(teamB);
-        document.getElementById('stats-team-a').innerText = `OVR: ${sa.ovr}`;
-        document.getElementById('stats-team-b').innerText = `OVR: ${sb.ovr}`;
+        const renderT = (t) => t.map(p => `<div class="flex justify-between text-xs md:text-sm py-1.5 border-b border-white/5 text-gray-300"><div class="flex items-center gap-2">${p.posicaoPref === 'gol' ? '<span class="text-[9px] bg-yellow-500/20 text-yellow-500 px-1 rounded">GK</span>' : ''}<span>${p.nomeOriginal}</span></div><span class="text-yellow-500 font-bold font-mono">${p.fifa.ovr}</span></div>`).join('');
+        document.getElementById('list-team-a').innerHTML = renderT(teamA); document.getElementById('list-team-b').innerHTML = renderT(teamB);
+        document.getElementById('stats-team-a').innerText = `OVR: ${sa.ovr}`; document.getElementById('stats-team-b').innerText = `OVR: ${sb.ovr}`;
         const diff = parseFloat(sa.ovr) - parseFloat(sb.ovr);
         let msg = Math.abs(diff) < 2 ? "Confronto Equilibrado." : `Favorito: ${diff > 0 ? 'Time A' : 'Time B'} (+${Math.abs(diff).toFixed(1)} OVR).`;
         document.getElementById('verdict-text').innerText = msg;
         document.getElementById('verdict-panel').classList.remove('hidden');
-        document.getElementById('teams-container').classList.remove('hidden');
-        document.getElementById('teams-container').classList.add('grid');
+        document.getElementById('teams-container').classList.remove('hidden'); document.getElementById('teams-container').classList.add('grid');
     }
 
     function setupComparisonTool() {
-        const p1 = document.getElementById('p1-select');
-        const p2 = document.getElementById('p2-select');
+        const p1 = document.getElementById('p1-select'); const p2 = document.getElementById('p2-select');
         if(p1.options.length > 0) return;
-        
         const opts = '<option value="">Selecione...</option>' + allPlayersData.sort((a,b)=>a.nomeOriginal.localeCompare(b.nomeOriginal)).map(p=>`<option value="${p.nome}">${p.nomeOriginal}</option>`).join('');
         p1.innerHTML = opts; p2.innerHTML = opts;
-
         const compare = () => {
-            const pl1 = allPlayersData.find(p=>p.nome === p1.value);
-            const pl2 = allPlayersData.find(p=>p.nome === p2.value);
-            const div = document.getElementById('comparison-content');
-            const radarContainer = document.getElementById('radar-container');
-            
-            if(!pl1 || !pl2) { 
-                div.innerHTML = '<div class="text-center text-gray-500 col-span-1 md:col-span-3">Selecione dois jogadores.</div>'; 
-                radarContainer.classList.add('hidden');
-                return; 
-            }
-
-            radarContainer.classList.remove('hidden');
-            radarContainer.classList.add('flex');
-
-            const renderStats = (l, v1, v2) => `
-                <div class="text-right font-bold ${v1>v2?'text-green-400':'text-gray-400'} text-lg md:text-xl">${v1}</div>
-                <div class="text-center text-[10px] md:text-xs text-gray-500 uppercase tracking-widest mt-1">${l}</div>
-                <div class="text-left font-bold ${v2>v1?'text-green-400':'text-gray-400'} text-lg md:text-xl">${v2}</div>
-            `;
-
-            div.innerHTML = `
-                <div class="flex flex-col items-center animate-slide-in order-1 md:order-none">
-                    <img src="${playerPhotos[pl1.nome]||''}" class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-blue-500 mb-2 md:mb-4 shadow-[0_0_20px_blue]">
-                    <h3 class="font-bold text-xl md:text-2xl text-white font-fifa uppercase text-center">${pl1.nomeOriginal.split(' ')[0]}</h3>
-                    <div class="text-3xl md:text-4xl font-fifa font-bold text-yellow-400 mt-2">${pl1.fifa.ovr}</div>
-                </div>
-                <div class="space-y-3 bg-white/5 p-4 rounded-xl border border-white/10 order-3 md:order-none col-span-1 md:col-span-1">
-                    <div class="grid grid-cols-3 gap-2 border-b border-white/5 pb-2">${renderStats('JOGOS', pl1.jogos, pl2.jogos)}</div>
-                    <div class="grid grid-cols-3 gap-2 border-b border-white/5 pb-2">${renderStats('GOLS', pl1.gols, pl2.gols)}</div>
-                    <div class="grid grid-cols-3 gap-2 border-b border-white/5 pb-2">${renderStats('ASSIST', pl1.assistencias, pl2.assistencias)}</div>
-                    <div class="grid grid-cols-3 gap-2 border-b border-white/5 pb-2">${renderStats('NOTA', pl1.notaGeral.toFixed(2), pl2.notaGeral.toFixed(2))}</div>
-                    <div class="grid grid-cols-3 gap-2 pb-2">${renderStats('VITÓRIAS', pl1.vitorias, pl2.vitorias)}</div>
-                </div>
-                <div class="flex flex-col items-center animate-slide-in order-2 md:order-none">
-                    <img src="${playerPhotos[pl2.nome]||''}" class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-red-500 mb-2 md:mb-4 shadow-[0_0_20px_red]">
-                    <h3 class="font-bold text-xl md:text-2xl text-white font-fifa uppercase text-center">${pl2.nomeOriginal.split(' ')[0]}</h3>
-                    <div class="text-3xl md:text-4xl font-fifa font-bold text-yellow-400 mt-2">${pl2.fifa.ovr}</div>
-                </div>
-            `;
-
+            const pl1 = allPlayersData.find(p=>p.nome === p1.value); const pl2 = allPlayersData.find(p=>p.nome === p2.value);
+            const div = document.getElementById('comparison-content'); const radarContainer = document.getElementById('radar-container');
+            if(!pl1 || !pl2) { div.innerHTML = '<div class="text-center text-gray-500 col-span-1 md:col-span-3">Selecione dois jogadores.</div>'; radarContainer.classList.add('hidden'); return; }
+            radarContainer.classList.remove('hidden'); radarContainer.classList.add('flex');
+            const renderStats = (l, v1, v2) => `<div class="text-right font-bold ${v1>v2?'text-green-400':'text-gray-400'} text-lg md:text-xl">${v1}</div><div class="text-center text-[10px] md:text-xs text-gray-500 uppercase tracking-widest mt-1">${l}</div><div class="text-left font-bold ${v2>v1?'text-green-400':'text-gray-400'} text-lg md:text-xl">${v2}</div>`;
+            div.innerHTML = `<div class="flex flex-col items-center animate-slide-in order-1 md:order-none"><img src="${playerPhotos[pl1.nome]||''}" class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-blue-500 mb-2 md:mb-4 shadow-[0_0_20px_blue]"><h3 class="font-bold text-xl md:text-2xl text-white font-fifa uppercase text-center">${pl1.nomeOriginal.split(' ')[0]}</h3><div class="text-3xl md:text-4xl font-fifa font-bold text-yellow-400 mt-2">${pl1.fifa.ovr}</div></div><div class="space-y-3 bg-white/5 p-4 rounded-xl border border-white/10 order-3 md:order-none col-span-1 md:col-span-1"><div class="grid grid-cols-3 gap-2 border-b border-white/5 pb-2">${renderStats('JOGOS', pl1.jogos, pl2.jogos)}</div><div class="grid grid-cols-3 gap-2 border-b border-white/5 pb-2">${renderStats('GOLS', pl1.gols, pl2.gols)}</div><div class="grid grid-cols-3 gap-2 border-b border-white/5 pb-2">${renderStats('ASSIST', pl1.assistencias, pl2.assistencias)}</div><div class="grid grid-cols-3 gap-2 border-b border-white/5 pb-2">${renderStats('NOTA', pl1.notaGeral.toFixed(2), pl2.notaGeral.toFixed(2))}</div><div class="grid grid-cols-3 gap-2 pb-2">${renderStats('VITÓRIAS', pl1.vitorias, pl2.vitorias)}</div></div><div class="flex flex-col items-center animate-slide-in order-2 md:order-none"><img src="${playerPhotos[pl2.nome]||''}" class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-red-500 mb-2 md:mb-4 shadow-[0_0_20px_red]"><h3 class="font-bold text-xl md:text-2xl text-white font-fifa uppercase text-center">${pl2.nomeOriginal.split(' ')[0]}</h3><div class="text-3xl md:text-4xl font-fifa font-bold text-yellow-400 mt-2">${pl2.fifa.ovr}</div></div>`;
             const ctxRadar = document.getElementById('radar-chart');
             if(ctxRadar && Chart) {
                 if(chartInstances['radar']) chartInstances['radar'].destroy();
-                chartInstances['radar'] = new Chart(ctxRadar, {
-                    type: 'radar',
-                    data: {
-                        labels: ['PAC', 'SHO', 'PAS', 'DEF', 'PHY', 'TEC'],
-                        datasets: [
-                            { label: pl1.nomeOriginal.split(' ')[0], data: [pl1.fifa.pac, pl1.fifa.sho, pl1.fifa.pas, pl1.fifa.def, pl1.fifa.phy, (pl1.notaGeral*10)], borderColor: '#3b82f6', backgroundColor: 'rgba(59, 130, 246, 0.2)', pointBackgroundColor: '#3b82f6' },
-                            { label: pl2.nomeOriginal.split(' ')[0], data: [pl2.fifa.pac, pl2.fifa.sho, pl2.fifa.pas, pl2.fifa.def, pl2.fifa.phy, (pl2.notaGeral*10)], borderColor: '#ef4444', backgroundColor: 'rgba(239, 68, 68, 0.2)', pointBackgroundColor: '#ef4444' }
-                        ]
-                    },
-                    options: {
-                        maintainAspectRatio: false,
-                        scales: { r: { grid: { color: 'rgba(255,255,255,0.1)' }, pointLabels: { color: '#fff', font: { size: 10, family: 'Rajdhani' } }, ticks: { display: false, backdropColor: 'transparent' }, angleLines: { color: 'rgba(255,255,255,0.1)' }, min: 0, max: 100 } },
-                        plugins: { legend: { labels: { color: '#fff', font: { family: 'Inter' } } } }
-                    }
-                });
+                chartInstances['radar'] = new Chart(ctxRadar, { type: 'radar', data: { labels: ['PAC', 'SHO', 'PAS', 'DEF', 'PHY', 'TEC'], datasets: [ { label: pl1.nomeOriginal.split(' ')[0], data: [pl1.fifa.pac, pl1.fifa.sho, pl1.fifa.pas, pl1.fifa.def, pl1.fifa.phy, (pl1.notaGeral*10)], borderColor: '#3b82f6', backgroundColor: 'rgba(59, 130, 246, 0.2)', pointBackgroundColor: '#3b82f6' }, { label: pl2.nomeOriginal.split(' ')[0], data: [pl2.fifa.pac, pl2.fifa.sho, pl2.fifa.pas, pl2.fifa.def, pl2.fifa.phy, (pl2.notaGeral*10)], borderColor: '#ef4444', backgroundColor: 'rgba(239, 68, 68, 0.2)', pointBackgroundColor: '#ef4444' } ] }, options: { maintainAspectRatio: false, scales: { r: { grid: { color: 'rgba(255,255,255,0.1)' }, pointLabels: { color: '#fff', font: { size: 10, family: 'Rajdhani' } }, ticks: { display: false, backdropColor: 'transparent' }, angleLines: { color: 'rgba(255,255,255,0.1)' }, min: 0, max: 100 } }, plugins: { legend: { labels: { color: '#fff', font: { family: 'Inter' } } } } } });
             }
         };
         p1.onchange = compare; p2.onchange = compare;
